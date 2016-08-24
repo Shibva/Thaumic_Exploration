@@ -10,6 +10,7 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.fluids.*;
 import thaumcraft.api.aspects.Aspect;
+import thaumcraft.api.visnet.VisNetHandler;
 import thaumcraft.common.config.Config;
 import thaumcraft.common.config.ConfigBlocks;
 import thaumcraft.common.tiles.TileCrucible;
@@ -147,11 +148,10 @@ public class TileEntityEverburnUrn extends TileVisRelay implements IFluidTank,IF
         super.updateEntity();
         this.ticks++;
         if(this.ticks==10) {
-            if (this.ignisVis < 16) {
-                ignisVis += this.consumeVis(Aspect.FIRE, 1);
-                worldObj.markBlockForUpdate(xCoord,yCoord,zCoord);
-            }
-            ticks=0;
+            if(this.ignisVis<16)
+                ignisVis += VisNetHandler.drainVis(worldObj, xCoord, yCoord, zCoord, Aspect.FIRE, 1);
+            worldObj.markBlockForUpdate(xCoord,yCoord,zCoord);
         }
+        ticks=0;
     }
 }
