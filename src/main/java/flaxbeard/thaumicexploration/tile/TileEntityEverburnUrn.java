@@ -149,7 +149,7 @@ public class TileEntityEverburnUrn extends TileVisRelay implements IFluidTank,IF
         this.ticks++;
         if(this.ticks==10) {
                 if(this.ignisVis<16){
-                    ignisVis += VisNetHandler.drainVis(worldObj, xCoord, yCoord, zCoord, Aspect.FIRE, ignisVis-16);
+                    ignisVis += VisNetHandler.drainVis(worldObj, xCoord, yCoord, zCoord, Aspect.FIRE, 1);
                     worldObj.markBlockForUpdate(xCoord,yCoord,zCoord);
                 }
             ticks=0;
