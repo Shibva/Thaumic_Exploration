@@ -16,3 +16,8 @@ Current content includes:
  - The Think Tank, a monstrosity that converts books and enchanted books into the ever-elusive knowledge fragments.
  - Work in progress Necromancy focus, allowing you to raise the dead.
  - The Everfull Urn, a remake of the Thaumcraft 2 item that acts as an infinite water supply, and more!
+
+# Fork
+This mod was forked by the GT:NH Team to continue the development of the 1.7.10 Branch.
+The up-to-date Master branch can be found on our Jenkins:
+http://jenkins.usrv.de
