@@ -211,7 +211,7 @@ public final class ModRecipes {
 //				new ItemStack(Items.blazePowder),new ItemStack(Blocks.chest),  new ItemStack(ConfigItems.itemResource,1,3));
 
 		registerResearchItemI("THINKTANK", new ItemStack(ThaumicExploration.thinkTankJar), 6, 
-				new AspectList().add(Aspect.MIND, 40).add(Aspect.SENSES, 20).add(Aspect.UNDEAD, 30), 
+				new AspectList().add(Aspect.GREED, 32).add(Aspect.MIND, 48).add(Aspect.SENSES, 32).add(Aspect.UNDEAD, 32).add(Aspect.ELDRITCH, 24).add(Aspect.MAGIC, 16),
 				new ItemStack(ConfigBlocks.blockJar),new ItemStack(ThaumicExploration.pureZombieBrain), new ItemStack(ConfigItems.itemInkwell,1,0), 
 				new ItemStack(ThaumicExploration.pureZombieBrain), new ItemStack(ConfigItems.itemThaumonomicon), 
 				new ItemStack(ThaumicExploration.pureZombieBrain), new ItemStack(ConfigItems.itemThaumometer));
