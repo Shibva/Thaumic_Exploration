@@ -298,7 +298,7 @@ te.text.DREAMCATCHER.1=They say that dreamcatchers are meant to stop nightmares 
 --Talisman of Nourishment
 te.name.TALISMANFOOD=Talisman of Nourishment
 te.tag.TALISMANFOOD=Everfull belly
-te.text.TALISMANFOOD.1=You often find yourself needing to take breaks during marathon researching sessions to satisfy your hunger. Finally you have found a way to get past your need for food.<BR><BR>By infusing a diamond with the essence of hunger, you have created an item that is able to suck the nourishing energy from various food items in your hotbar and store this energy within. It will then automatically replenish your food meter if it is depleted.<BR><BR>This device will only work on simple food items, so foods that invoke effects such as Rotten Flesh and Golden Apples must be consumed normally.
+te.text.TALISMANFOOD.1=You often find yourself needing to take breaks during marathon researching sessions to satisfy your hunger. Finally you have found a way to get past your need for food.<BR><BR>By infusing a ruby with the essence of hunger, you have created an item that is able to suck the nourishing energy from various food items in your hotbar and store this energy within. It will then automatically replenish your food meter if it is depleted.<BR><BR>This device will only work on simple food items, so foods that invoke effects such as Rotten Flesh and Golden Apples must be consumed normally.
 
 --Disarming Enchantment
 te.name.ENCHDISARM=Enchantment: Disarming
