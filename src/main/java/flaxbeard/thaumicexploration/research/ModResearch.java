@@ -60,7 +60,7 @@ public final class ModResearch {
     	 research = new TXResearchItem("BRAINCURE", "TX", new AspectList().add(Aspect.MIND, 4).add(Aspect.ORDER, 5).add(Aspect.MAN, 3).add(Aspect.UNDEAD, 3), -2, -8, 1, new ItemStack(ThaumicExploration.pureZombieBrain)).setParents("JARBRAIN","FLESHCURE","TXINFUSION").setParentsHidden("INFUSION").setConcealed().registerResearchItem().setSecondary();
          research.setPages(new ResearchPage("1"),infusionPage("BRAINCURE") );
          if (ThaumicExploration.allowThinkTank) {
-             research = new TXResearchItem("THINKTANK", "TX", new AspectList().add(Aspect.UNDEAD, 12).add(Aspect.MIND, 18).add(Aspect.SENSES, 15).add(Aspect.GREED, 9).add(Aspect.ELDRITCH, 6).add(Aspect.MAGIC, 3), -1, -5, 3, new ItemStack(ThaumicExploration.thinkTankJar)).setParents("BraincureGTNH","RESEARCHER2").setParentsHidden("INFUSION").setConcealed().registerResearchItem();
+             research = new TXResearchItem("THINKTANK", "TX", new AspectList().add(Aspect.UNDEAD, 12).add(Aspect.MIND, 18).add(Aspect.SENSES, 15).add(Aspect.GREED, 9).add(Aspect.ELDRITCH, 6).add(Aspect.MAGIC, 3), -1, -5, 3, new ItemStack(ThaumicExploration.thinkTankJar)).setParents("BRAINCURE","RESEARCHER2").setParentsHidden("INFUSION").setConcealed().registerResearchItem();
              research.setPages(new ResearchPage("1"), infusionPage("THINKTANK"), new ResearchPage("2"), constructPage("BUILDTHINKTANK"));
          }
         
