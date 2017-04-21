@@ -32,7 +32,7 @@ public class BlockReplicator extends BlockContainer {
 	
 	public IIcon[] icon = new IIcon[3];
 
-	public BlockReplicator(int par1) {
+	public BlockReplicator() {
 		super(Material.iron);
 	}
 	

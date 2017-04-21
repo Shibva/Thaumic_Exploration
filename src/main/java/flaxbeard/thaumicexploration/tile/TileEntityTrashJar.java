@@ -5,6 +5,7 @@ import net.minecraftforge.common.util.ForgeDirection;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.common.tiles.TileJarFillable;
 import flaxbeard.thaumicexploration.ThaumicExploration;
+import flaxbeard.thaumicexploration.common.Config;
 
 public class TileEntityTrashJar extends TileJarFillable {
 	int ticks = 0;
@@ -48,14 +49,17 @@ public class TileEntityTrashJar extends TileJarFillable {
 	
     public void updateEntity()
     {
-    	if (this.worldObj.isRemote) {
-	        for (int i=0;i<3;i++) {
-	        	double[] pos1 = {xCoord+Math.random(),yCoord+Math.random(),zCoord+Math.random()};
-	        	double[] pos2 = {pos1[0]+(Math.random()/2)-0.25F,pos1[1]+(Math.random()/2)-0.25F,pos1[2]+(Math.random()/2)-0.25F};
-	        	ThaumicExploration.instance.proxy.spawnLightningBolt(worldObj,pos1[0],pos1[1],pos1[2], xCoord+0.5F, yCoord+0.4F,zCoord+0.5F);
-	        	ThaumicExploration.instance.proxy.spawnLightningBolt(worldObj,pos2[0],pos2[1],pos2[2], pos1[0],pos1[1],pos1[2]);
-	        }
+    	if (Config.voidJarLightning) {
+    		if (this.worldObj.isRemote) {
+    	        for (int i=0;i<3;i++) {
+    	        	double[] pos1 = {xCoord+Math.random(),yCoord+Math.random(),zCoord+Math.random()};
+    	        	double[] pos2 = {pos1[0]+(Math.random()/2)-0.25F,pos1[1]+(Math.random()/2)-0.25F,pos1[2]+(Math.random()/2)-0.25F};
+    	        	ThaumicExploration.instance.proxy.spawnLightningBolt(worldObj,pos1[0],pos1[1],pos1[2], xCoord+0.5F, yCoord+0.4F,zCoord+0.5F);
+    	        	ThaumicExploration.instance.proxy.spawnLightningBolt(worldObj,pos2[0],pos2[1],pos2[2], pos1[0],pos1[1],pos1[2]);
+    	        }
+        	}
     	}
+    	
     	if (this.amount > 0) {
     		ticks++;
     		if (ticks > 5) {

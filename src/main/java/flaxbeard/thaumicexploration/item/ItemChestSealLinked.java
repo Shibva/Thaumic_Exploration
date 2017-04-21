@@ -20,7 +20,7 @@ import flaxbeard.thaumicexploration.ThaumicExploration;
 public class ItemChestSealLinked extends Item {
 	public IIcon theIcon;
 	public static final String[] itemNames = {"Pale", "Orange", "Magenta", "Light Blue", "Yellow", "Lime", "Pink", "Gray", "Light Gray", "Cyan", "Purple", "Blue", "Brown", "Green", "Red", "Dark"} ;
-	public ItemChestSealLinked(int par1) {
+	public ItemChestSealLinked() {
 		super();
 		this.setMaxDamage(0);
 		this.setHasSubtypes(true);

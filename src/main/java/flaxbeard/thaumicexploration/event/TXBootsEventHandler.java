@@ -7,21 +7,25 @@ import cpw.mods.fml.common.Loader;
 import flaxbeard.thaumicexploration.integration.TTIntegration;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.player.PlayerCapabilities;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.util.Vec3;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
+import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.nodes.INode;
 import thaumcraft.api.potions.PotionFluxTaint;
 import thaumcraft.common.Thaumcraft;
+import thaumcraft.common.config.Config;
 import thaumcraft.common.config.ConfigItems;
 import thaumcraft.common.items.wands.ItemWandCasting;
 import thaumcraft.common.lib.world.ThaumcraftWorldGenerator;
@@ -36,9 +40,9 @@ public class TXBootsEventHandler
   
   
   @SubscribeEvent
-  public void livingTick(LivingEvent.LivingUpdateEvent event)
+  public void livingTick(LivingUpdateEvent event)
   {
-	if (event.entity instanceof EntityPlayer) {
+	/*if (event.entity instanceof EntityPlayer) {
 //		PlayerKnowledge rp = Thaumcraft.proxy.getPlayerKnowledge();
 //		if (!rp.hasDiscoveredAspect(((EntityPlayer)event.entity).username, ThaumicExploration.fakeAspectNecro)) {
 //			System.out.println(event.entity.worldObj.isRemote+" Discovering fake aspect");
@@ -49,7 +53,7 @@ public class TXBootsEventHandler
 //				System.out.println(event.entity.worldObj.isRemote+" has discovered fake aspect");
 //			}
 //		}
-	}
+	}*/
     if ((event.entity instanceof EntityPlayer))
     {
     	EntityPlayer player = (EntityPlayer)event.entity;
@@ -153,8 +157,9 @@ public class TXBootsEventHandler
         	}
         }
         
+        //TODO tainted band
         boolean isTainted = false;
-        for (int i = 0; i<10; i++) {
+        for (int i = 0; i<player.inventory.getSizeInventory(); i++) {
 			if (player.inventory.getStackInSlot(i) != null && player.inventory.getStackInSlot(i).getItem() == ThaumicExploration.charmTaint) {
 				isTainted = true;
 				break;
@@ -184,7 +189,7 @@ public class TXBootsEventHandler
 		        taintGP++;
 		        player.getEntityData().setInteger("taintGracePeriod", taintGP);
     			if (player.getActivePotionEffect(ThaumicExploration.potionTaintWithdrawl) == null && taintGP > 100) {
-    				for (int i = 0; i<10; i++) {
+    				for (int i = 0; i<player.inventory.getSizeInventory(); i++) {
     					if (player.inventory.getStackInSlot(i) != null && player.inventory.getStackInSlot(i).getItem() == ConfigItems.itemResource && (player.inventory.getStackInSlot(i).getItemDamage() == 11 || player.inventory.getStackInSlot(i).getItemDamage() == 12)) {
     						player.inventory.decrStackSize(i, 1);
     	    				taintGP = 0;
@@ -231,14 +236,16 @@ public class TXBootsEventHandler
 	        	}
         	}
         }
-        if (player.getActivePotionEffect(PotionFluxTaint.instance) != null) {
-        	for (int i = 0; i<10; i++) {
+        /*
+        //TODO
+        	for (int i = 0; i<player.inventory.getSizeInventory(); i++) {
+        		 
     			if (player.inventory.getStackInSlot(i) != null && player.inventory.getStackInSlot(i).getItem() == ThaumicExploration.charmTaint) {
         		player.removePotionEffect(PotionFluxTaint.instance.id);
 				break;
-			}
+    			}
         	}
-        }
+        */
     }
     
     
@@ -249,11 +256,43 @@ public class TXBootsEventHandler
       this.prevStep.remove(Integer.valueOf(event.entity.getEntityId()));
     
     }
-   
     
   }
+  /*
+  @SubscribeEvent
+	public void onEntityUpdate(LivingUpdateEvent event){
+	  if (event.entity instanceof EntityPlayer) {
+	    	EntityPlayer player = (EntityPlayer)event.entity;
+	    	
+	    	PotionEffect effect = player.getActivePotionEffect(Config.potionTaintPoisonID);
+			if (!(effect == null)) {
+				
+				PotionEffect neweffect = new PotionEffect(Potion.nightVision.id, Integer.MAX_VALUE, -42, true);
+				player.addPotionEffect(neweffect);
+				
+				System.out.println("some flux here");
+			}
+			else {
+				//System.out.println("no flux");
+			}
+			
+	    	
+			/*if(player.isPotionActive(PotionFluxTaint.instance.id)){ 
+				
+				
+				for (int i = 0; i<player.inventory.getSizeInventory(); i++) {
+	    			if (player.inventory.getStackInSlot(i) != null && 
+    					player.inventory.getStackInSlot(i).getItem() == ThaumicExploration.charmTaint) {
+			        		player.removePotionEffect(PotionFluxTaint.instance.id);
+							//break;
+	    			}
+	        	}
+				
+				
+			}
+	    }
+	}*/
   
-
   
   @SubscribeEvent
   public void joinWorld(EntityJoinWorldEvent event)

@@ -8,8 +8,8 @@ import flaxbeard.thaumicexploration.tile.TileEntityAutoCrafter;
 
 public class BlockAutoCrafter extends BlockContainer {
 
-	protected BlockAutoCrafter(int par1, Material par2Material) {
-		super(par2Material);
+	public BlockAutoCrafter() {
+		super(Material.iron);
 		// TODO Auto-generated constructor stub
 	}
 

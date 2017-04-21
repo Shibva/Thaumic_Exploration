@@ -17,7 +17,7 @@ import flaxbeard.thaumicexploration.tile.TileEntityFloatyCandle;
 
 public class BlockFloatyCandle extends BlockCandle implements ITileEntityProvider, IInfusionStabiliser {
 
-	public BlockFloatyCandle(int i) {
+	public BlockFloatyCandle() {
 		super();
 		// TODO Auto-generated constructor stub
 	}

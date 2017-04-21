@@ -65,6 +65,7 @@ import thaumcraft.common.entities.golems.ItemGolemBell;
 import thaumcraft.common.entities.golems.ItemGolemPlacer;
 import thaumcraft.common.items.wands.ItemWandCasting;
 import thaumcraft.common.tiles.TileJarFillable;
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.network.internal.FMLNetworkHandler;
 import cpw.mods.fml.common.network.internal.FMLProxyPacket;
@@ -531,14 +532,15 @@ public class TXEventHandler {
 		}
 	}
 	
+	public static boolean isEnderIO = Loader.isModLoaded("EnderIO");
 	
 	@SubscribeEvent
 	public void stopCreeperExplosions(LivingUpdateEvent event) {
-		if (event.entityLiving.getEquipmentInSlot(4) != null) {
+		if (!isEnderIO && event.entityLiving.getEquipmentInSlot(4) != null) {
 			ItemStack heldItem = event.entityLiving.getEquipmentInSlot(4);
 			int nightVision = EnchantmentHelper.getEnchantmentLevel(ThaumicExploration.enchantmentNightVision.effectId, heldItem);
-			if(nightVision > 0 && (!event.entityLiving.isPotionActive(Potion.nightVision.id) || event.entityLiving.getActivePotionEffect(Potion.nightVision).getDuration() < 202)) {
-				event.entityLiving.addPotionEffect(new PotionEffect(Potion.nightVision.id, 202, 1));
+			if(nightVision > 0 && (!event.entityLiving.isPotionActive(Potion.nightVision.id) || event.entityLiving.getActivePotionEffect(Potion.nightVision).getDuration() < 210)) {
+				event.entityLiving.addPotionEffect(new PotionEffect(Potion.nightVision.id, 210, 1, true));
 			}
 		}
 		if (event.entityLiving instanceof EntityCreeper && event.entityLiving.isPotionActive(ThaumicExploration.potionBinding)) {
@@ -734,8 +736,9 @@ public class TXEventHandler {
 	public void handleItemUse(PlayerInteractEvent event) {
 		byte type = 0;
 		
-		if (event.entityPlayer.worldObj.blockExists(event.x, event.y, event.z)) {
-			if (event.entityPlayer.getCurrentEquippedItem() != null) {
+		if (event.entityPlayer.worldObj.blockExists(event.x, event.y, event.z)) { 
+			/*
+			if (event.entityPlayer.getCurrentEquippedItem() != null) {		
 				if (event.entityPlayer.getCurrentEquippedItem().getItem() == ConfigItems.itemGolemBell) {
 					ItemStack stack  =event.entityPlayer.getCurrentEquippedItem();
 					if (event.entityPlayer.worldObj.getBlock(event.x, event.y, event.z) == ThaumicExploration.autoSorter) {
@@ -788,7 +791,8 @@ public class TXEventHandler {
 					}
 						
 				}
-			}
+			}*/
+			
 			//System.out.println(event.entityPlayer.worldObj.getBlock(event.x, event.y, event.z) + " " + ThaumicExploration.boundChest);
 			if (event.entityPlayer.worldObj.getBlock(event.x, event.y, event.z) == Blocks.chest) {
 

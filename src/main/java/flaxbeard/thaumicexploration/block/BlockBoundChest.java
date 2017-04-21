@@ -36,10 +36,10 @@ public class BlockBoundChest extends BlockContainer
     /** 1 for trapped chests, 0 for normal chests. */
     public final int chestType;
 
-    public BlockBoundChest(int par1, int par2)
+    public BlockBoundChest()
     {
         super(Material.wood);
-        this.chestType = par2;
+        this.chestType = 0;
         this.setCreativeTab(CreativeTabs.tabDecorations);
         this.setBlockBounds(0.0625F, 0.0F, 0.0625F, 0.9375F, 0.875F, 0.9375F);
     }

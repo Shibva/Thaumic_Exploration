@@ -36,7 +36,7 @@ public class BlockEverfullUrn extends BlockContainer {
 	public IIcon texture;
 	
 
-	public BlockEverfullUrn(int par1) {
+	public BlockEverfullUrn() {
 		super(Material.rock);
 		// TODO Auto-generated constructor stub
 	}
@@ -134,7 +134,7 @@ public class BlockEverfullUrn extends BlockContainer {
 					if (!entityPlayer.inventory.addItemStackToInventory(new ItemStack(Items.water_bucket, 1))) {
 						entityPlayer.dropItem(Items.water_bucket, 1);
 					}
-		            world.playSoundAtEntity(entityPlayer, "liquid.swim", 0.5F, 1.0F);
+		            world.playSoundAtEntity(entityPlayer, "liquid.water", 0.5F, 1.0F);
 				}
 				else if (FluidContainerRegistry.isEmptyContainer(entityPlayer.inventory.getCurrentItem())) {
 					ItemStack newStack = entityPlayer.inventory.getCurrentItem();
@@ -142,7 +142,7 @@ public class BlockEverfullUrn extends BlockContainer {
 					if (!entityPlayer.inventory.addItemStackToInventory(FluidContainerRegistry.fillFluidContainer(new FluidStack(FluidRegistry.WATER, 1000), newStack))) {
 						entityPlayer.dropItem(FluidContainerRegistry.fillFluidContainer(new FluidStack(FluidRegistry.WATER, 1000), newStack).getItem(),1);
 					}
-					world.playSoundAtEntity(entityPlayer, "liquid.swim", 0.5F, 1.0F);
+					world.playSoundAtEntity(entityPlayer, "liquid.water", 0.5F, 1.0F);
 				}
 				else if (entityPlayer.inventory.getCurrentItem().getItem() instanceof IFluidContainerItem) {
 					ItemStack newStack = new ItemStack(entityPlayer.inventory.getCurrentItem().getItem(),1);
@@ -151,7 +151,7 @@ public class BlockEverfullUrn extends BlockContainer {
 					if (!entityPlayer.inventory.addItemStackToInventory(newStack)) {
 						entityPlayer.dropItem(newStack.getItem(),newStack.stackSize);
 					}
-					world.playSoundAtEntity(entityPlayer, "liquid.swim", 0.5F, 1.0F);
+					world.playSoundAtEntity(entityPlayer, "liquid.water", 0.5F, 1.0F);
 				}
 			}
 		

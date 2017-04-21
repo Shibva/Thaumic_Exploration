@@ -10,6 +10,8 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.fluids.*;
 import thaumcraft.api.aspects.Aspect;
+import thaumcraft.api.visnet.TileVisNode;
+import thaumcraft.api.visnet.VisNetHandler;
 import thaumcraft.common.config.Config;
 import thaumcraft.common.config.ConfigBlocks;
 import thaumcraft.common.tiles.TileCrucible;
@@ -18,7 +20,7 @@ import thaumcraft.common.tiles.TileVisRelay;
 import java.util.List;
 //import flaxbeard.thaumicexploration.integration.BotaniaIntegration;
 
-public class TileEntityEverburnUrn extends TileVisRelay implements IFluidTank,IFluidHandler {
+public class TileEntityEverburnUrn extends TileVisNode implements IFluidTank, IFluidHandler {
 
     private int ticks = 0;
     private int drainTicks = 0;
@@ -32,7 +34,7 @@ public class TileEntityEverburnUrn extends TileVisRelay implements IFluidTank,IF
     private int range = 3;
     private int yRange = 2;
     private EntityPlayer burningPlayer;
-    public static int CONVERSION_FACTOR=250;
+    public static int CONVERSION_FACTOR=10;
 
 
     @Override
@@ -62,7 +64,7 @@ public class TileEntityEverburnUrn extends TileVisRelay implements IFluidTank,IF
     @Override
     public int getCapacity() {
         // TODO Auto-generated method stub
-        return 4*CONVERSION_FACTOR;
+        return 10*CONVERSION_FACTOR;
     }
 
     @Override
@@ -86,7 +88,7 @@ public class TileEntityEverburnUrn extends TileVisRelay implements IFluidTank,IF
         }
         if(doDrain) {
             worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
-            ignisVis=ignisVis-(drained/250);
+            ignisVis=ignisVis-(drained/10);
         }
         FluidStack stack = new FluidStack(FluidRegistry.LAVA, (int)drained);
         return stack;
@@ -147,11 +149,21 @@ public class TileEntityEverburnUrn extends TileVisRelay implements IFluidTank,IF
         super.updateEntity();
         this.ticks++;
         if(this.ticks==10) {
-            if (this.ignisVis < 16) {
-                ignisVis += this.consumeVis(Aspect.FIRE, 1);
-                worldObj.markBlockForUpdate(xCoord,yCoord,zCoord);
-            }
+                if(this.ignisVis<200){
+                    ignisVis += VisNetHandler.drainVis(this.worldObj, this.xCoord, this.yCoord, this.zCoord, Aspect.FIRE, 5);
+                    worldObj.markBlockForUpdate(xCoord,yCoord,zCoord);
+                }
             ticks=0;
         }
     }
+
+	@Override
+	public int getRange() {
+		return 0;
+	}
+
+	@Override
+	public boolean isSource() {
+		return false;
+	}
 }

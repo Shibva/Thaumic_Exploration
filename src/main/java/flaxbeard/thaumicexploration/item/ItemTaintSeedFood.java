@@ -19,7 +19,7 @@ public class ItemTaintSeedFood extends ItemSeedFood implements IPlantable
     /** Block ID of the soil this seed food should be planted on. */
     private int soilId;
 
-    public ItemTaintSeedFood(int par1, int par2, float par3, Block par4, Block par5)
+    public ItemTaintSeedFood(int par2, float par3, Block par4, Block par5)
     {
         super(par2, par3, par4, par5);
     }

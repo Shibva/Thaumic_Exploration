@@ -63,7 +63,7 @@ public class BlockCrucibleSouls extends BlockContainer {
 	    return this.IIcon[9];
 	  }
 
-	public BlockCrucibleSouls(int par1) {
+	public BlockCrucibleSouls() {
 		super(Material.iron);
 	    setHardness(3.0F);
 	    setResistance(17.0F);

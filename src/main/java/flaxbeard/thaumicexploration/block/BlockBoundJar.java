@@ -29,7 +29,7 @@ public class BlockBoundJar extends BlockJar {
 
 	private Random random;
 
-	public BlockBoundJar(int i) {
+	public BlockBoundJar() {
 		super();
 		// TODO Auto-generated constructor stub
 	}

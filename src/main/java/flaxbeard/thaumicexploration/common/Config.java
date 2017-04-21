@@ -1,0 +1,74 @@
+package flaxbeard.thaumicexploration.common;
+
+import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.common.config.Configuration;
+
+public class Config {
+	
+	public static int potionTaintWithdrawlID;
+	public static int potionBindingID;
+	public static int enchantmentBindingID;
+	public static int enchantmentNightVisionID;
+	public static int enchantmentDisarmID;
+	
+	public static boolean prefix;
+	public static boolean breadWand;
+	public static boolean brainsGolem;
+	public static boolean allowBoundInventories;
+	public static boolean allowReplication;
+	public static boolean allowCrucSouls;
+	public static boolean allowThinkTank;
+	public static boolean allowFood;
+	public static boolean allowUrn;
+	public static boolean allowbUrn;
+	public static boolean allowBoots;
+	public static boolean allowSojourner;
+	public static boolean allowMechanist;
+	public static boolean allowEnchants;
+	public static boolean allowTainturgy;
+	public static boolean allowMagicPlankReplication;
+	public static boolean allowModWoodReplication;
+	public static boolean allowModStoneReplication;
+	public static boolean voidJarLightning;
+	
+	static Configuration config;
+
+	public static void loadConfig(FMLPreInitializationEvent event) {
+		config = new Configuration(event.getSuggestedConfigurationFile());
+		config.load();
+		
+
+		potionTaintWithdrawlID = config.get("Potion", "Taint Withdrawl", 32).getInt();
+		potionBindingID = config.get("Potion", "Binding", 31).getInt();
+
+		enchantmentBindingID = config.get("Enchantment", "Binding", 77).getInt();
+		enchantmentNightVisionID = config.get("Enchantment", "Night Vision", 78).getInt();
+		enchantmentDisarmID = config.get("Enchantment", "Disarming", 79).getInt();
+
+		//allowOsmotic = config.get("Miscellaneous", "Add new enchantments to Thaumic Tinkerer's Osmotic Enchanter (Requires TT Build 72+)", true).getBoolean(true);
+		prefix = config.get("Miscellaneous", "Display [TX] prefix before Thaumic Exploration research", true).getBoolean(true);
+		breadWand = config.get("Easter Eggs", "Enable Thaumic Frenchurgy", false).getBoolean(true);
+		brainsGolem = config.get("Miscellaneous", "Use Purified Brains in advanced golems", true).getBoolean(true);
+		//taintBloom = config.get("Miscellaneous", "Move the Etheral Bloom to the Tainturgy tab", true).getBoolean(true);
+		allowBoundInventories = config.get("Miscellaneous", "Enable bound inventories", true).getBoolean(true);
+		allowReplication = config.get("Miscellaneous", "Enable Thaumic Replicator", true).getBoolean(true);
+		allowCrucSouls = config.get("Miscellaneous", "Enable Crucible of Souls", true).getBoolean(true);
+		allowThinkTank = config.get("Miscellaneous", "Enable Think Tank", true).getBoolean(true);
+		allowFood = config.get("Miscellaneous", "Enable Talisman of Nourishment", true).getBoolean(true);
+		allowUrn = config.get("Miscellaneous", "Enable Everfull Urn", true).getBoolean(true);
+        allowbUrn = config.get("Miscellaneous", "Enable Everburn Urn", true).getBoolean(true);
+		allowBoots = config.get("Miscellaneous", "Enable Boots of the Meteor/Comet", true).getBoolean(true);
+		allowSojourner = config.get("Miscellaneous", "Enable Sojourner's Wand Caps", true).getBoolean(true);
+		allowMechanist = config.get("Miscellaneous", "Enable Mechanist's Wand Caps", true).getBoolean(true);
+		allowEnchants = config.get("Miscellaneous", "Enable TX Enchantments", true).getBoolean(true);
+		allowTainturgy = config.get("Miscellaneous", "Enable Wispy Dreamcatcher", true).getBoolean(true);
+		allowMagicPlankReplication = config.get("Replicator", "Allow replication of Greatwood/Silverwood planks", true).getBoolean(true);
+		allowModWoodReplication = config.get("Replicator", "Allow replication of other mods' logs and planks", true).getBoolean(true);
+		allowModStoneReplication = config.get("Replicator", "Allow replication of other mods' stone blocks", true).getBoolean(true);
+		
+		voidJarLightning = config.get("Miscellaneous", "Enable effects on oblivion jar", false).getBoolean(false);
+		
+		config.save();
+	}
+
+}
