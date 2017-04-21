@@ -2,7 +2,7 @@
 {
   "modid": "ThaumicExploration",
   "name": "Thaumic Exploration",
-  "description": "An add-on for Thaumcraft 4.1, adding a variety of content.",
+  "description": "An add-on for Thaumcraft 4, adding a variety of content.",
   "version": "${version}",
   "mcversion": "1.7.10",
   "url": "https://github.com/KryptonCaptain/Thaumic_Exploration",
