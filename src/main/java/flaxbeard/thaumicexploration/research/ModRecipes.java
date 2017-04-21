@@ -24,6 +24,7 @@ import thaumcraft.common.config.ConfigItems;
 import thaumcraft.common.config.ConfigResearch;
 import cpw.mods.fml.common.registry.GameRegistry;
 import flaxbeard.thaumicexploration.ThaumicExploration;
+import flaxbeard.thaumicexploration.common.Config;
 import flaxbeard.thaumicexploration.item.ItemBaubleDiscountRing;
 
 
@@ -116,7 +117,7 @@ public final class ModRecipes {
 				new ItemStack(ConfigItems.itemShard,1,5), 
 				new ItemStack(ConfigItems.itemResource,1,14));
 		
-		if (ThaumicExploration.breadWand) {
+		if (Config.breadWand) {
 			registerResearchItemI("ROD_BREAD", new ItemStack(ThaumicExploration.breadCore), 3, 
 					new AspectList().add(Aspect.MAGIC, 8).add(Aspect.CROP, 8).add(Aspect.HUNGER, 4), 
 					new ItemStack(Items.bread), 

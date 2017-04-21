@@ -8,8 +8,8 @@ import flaxbeard.thaumicexploration.tile.TileEntityAutoSorter;
 
 public class BlockAutoSorter extends BlockContainer {
 
-	public BlockAutoSorter(int par1, Material par2Material) {
-		super(par2Material);
+	public BlockAutoSorter() {
+		super(Material.iron);
 		// TODO Auto-generated constructor stub
 	}
 

@@ -36,7 +36,7 @@ public class BlockEverburnUrn extends BlockContainer {
 	public IIcon texture;
 
 
-	public BlockEverburnUrn(int par1) {
+	public BlockEverburnUrn() {
 		super(Material.rock);
 		// TODO Auto-generated constructor stub
 	}
@@ -139,7 +139,7 @@ public class BlockEverburnUrn extends BlockContainer {
                         if (!entityPlayer.inventory.addItemStackToInventory(filledStack)) {
                             entityPlayer.dropPlayerItemWithRandomChoice(filledStack, false);
                         }
-                        world.playSoundAtEntity(entityPlayer, "liquid.swim", 0.5F, 1.0F);
+                        world.playSoundAtEntity(entityPlayer, "liquid.lava", 0.5F, 1.0F);
                         world.markBlockForUpdate(par2,par3,par4);
                     }
 				}
@@ -148,7 +148,7 @@ public class BlockEverburnUrn extends BlockContainer {
                     int fill=itm.fill(entityPlayer.inventory.getCurrentItem(),entity.getFluid(),true);
                     if(fill>0) {
                         entity.drain(fill,true);
-                        world.playSoundAtEntity(entityPlayer, "liquid.swim", 0.5F, 1.0F);
+                        world.playSoundAtEntity(entityPlayer, "liquid.lava", 0.5F, 1.0F);
                         world.markBlockForUpdate(par2,par3,par4);
                     }
 				}

@@ -16,7 +16,7 @@ import net.minecraft.world.World;
 
 public class BlockBootsIce extends BlockIce {
 
-	public BlockBootsIce(int par1) {
+	public BlockBootsIce() {
 		super();
 		// TODO Auto-generated constructor stub
 	}

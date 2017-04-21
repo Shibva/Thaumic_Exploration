@@ -45,10 +45,10 @@ public class BlockThinkTank extends BlockContainer
     @SideOnly(Side.CLIENT)
     private Icon furnaceIconFront;
 
-    public BlockThinkTank(int par1, boolean par2)
+    public BlockThinkTank()
     {
         super(Material.glass);
-        this.isActive = par2;
+        this.isActive = false;
         setStepSound(new JarStepSound("jar",1.0F,1.0F));
         setHardness(0.3F);
         setLightLevel(0.66F);

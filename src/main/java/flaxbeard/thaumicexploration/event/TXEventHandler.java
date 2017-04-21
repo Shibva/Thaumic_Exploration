@@ -736,8 +736,9 @@ public class TXEventHandler {
 	public void handleItemUse(PlayerInteractEvent event) {
 		byte type = 0;
 		
-		if (event.entityPlayer.worldObj.blockExists(event.x, event.y, event.z)) {
-			if (event.entityPlayer.getCurrentEquippedItem() != null) {
+		if (event.entityPlayer.worldObj.blockExists(event.x, event.y, event.z)) { 
+			/*
+			if (event.entityPlayer.getCurrentEquippedItem() != null) {		
 				if (event.entityPlayer.getCurrentEquippedItem().getItem() == ConfigItems.itemGolemBell) {
 					ItemStack stack  =event.entityPlayer.getCurrentEquippedItem();
 					if (event.entityPlayer.worldObj.getBlock(event.x, event.y, event.z) == ThaumicExploration.autoSorter) {
@@ -790,7 +791,8 @@ public class TXEventHandler {
 					}
 						
 				}
-			}
+			}*/
+			
 			//System.out.println(event.entityPlayer.worldObj.getBlock(event.x, event.y, event.z) + " " + ThaumicExploration.boundChest);
 			if (event.entityPlayer.worldObj.getBlock(event.x, event.y, event.z) == Blocks.chest) {
 

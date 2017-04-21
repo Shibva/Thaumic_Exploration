@@ -147,6 +147,7 @@ tile.thaumicexploration:replicator.name=Thaumic Replicator
 tile.thaumicexploration:trashJar.name=Oblivion Jar
 tile.thaumicexploration:soulBrazier.name=Soul Brazier
 tile.boundJar.name=Bound Jar
+tile.boundChest.name=Bound Chest
 tile.thaumicexploration:floatCandle.0.name=White Floating Candle
 tile.thaumicexploration:floatCandle.1.name=Orange Floating Candle
 tile.thaumicexploration:floatCandle.2.name=Magenta Floating Candle
@@ -163,6 +164,7 @@ tile.thaumicexploration:floatCandle.12.name=Brown Floating Candle
 tile.thaumicexploration:floatCandle.13.name=Green Floating Candle
 tile.thaumicexploration:floatCandle.14.name=Red Floating Candle
 tile.thaumicexploration:floatCandle.15.name=Black Floating Candle
+tile.thaumicexploration:autoSorter.name=Auto-sorter
 
 ----Thaumonomicon Entries----
 te.researchPrefix=[TX]

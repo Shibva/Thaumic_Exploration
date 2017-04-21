@@ -27,7 +27,7 @@ public class ItemFoodTalisman extends Item {
 
 	public static List<String> foodBlacklist=new ArrayList<String>();
 	public static Map<String,Boolean> foodCache=new HashMap<String, Boolean>();
-	public ItemFoodTalisman(int par1) {
+	public ItemFoodTalisman() {
 		super();
 		this.maxStackSize = 1;
 		//this.setMaxDamage(100);

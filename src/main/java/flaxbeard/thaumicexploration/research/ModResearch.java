@@ -20,6 +20,7 @@ import thaumcraft.api.research.ResearchPage;
 import thaumcraft.common.config.ConfigResearch;
 import cpw.mods.fml.common.Loader;
 import flaxbeard.thaumicexploration.ThaumicExploration;
+import flaxbeard.thaumicexploration.common.Config;
 
 public final class ModResearch {
 	
@@ -59,13 +60,13 @@ public final class ModResearch {
       
     	 research = new TXResearchItem("BRAINCURE", "TX", new AspectList().add(Aspect.MIND, 4).add(Aspect.ORDER, 5).add(Aspect.MAN, 3).add(Aspect.UNDEAD, 3), -2, -8, 1, new ItemStack(ThaumicExploration.pureZombieBrain)).setParents("JARBRAIN","FLESHCURE","TXINFUSION").setParentsHidden("INFUSION").setConcealed().registerResearchItem().setSecondary();
          research.setPages(new ResearchPage("1"),infusionPage("BRAINCURE") );
-         if (ThaumicExploration.allowThinkTank) {
+         if (Config.allowThinkTank) {
              research = new TXResearchItem("THINKTANK", "TX", new AspectList().add(Aspect.UNDEAD, 4).add(Aspect.MIND, 8).add(Aspect.SENSES, 6).add(Aspect.GREED, 2), -1, -5, 3, new ItemStack(ThaumicExploration.thinkTankJar)).setParents("BRAINCURE","RESEARCHER2").setParentsHidden("INFUSION").setConcealed().registerResearchItem();
              research.setPages(new ResearchPage("1"), infusionPage("THINKTANK"), new ResearchPage("2"), constructPage("BUILDTHINKTANK"));
          }
         
         //Misc
-        if (ThaumicExploration.allowUrn) {
+        if (Config.allowUrn) {
 		        research = new TXResearchItem("URN", "TX", new AspectList().add(Aspect.MAGIC, 4).add(Aspect.VOID, 2).add(Aspect.WATER, 5), 3,-10 , 1, new ItemStack(ThaumicExploration.everfullUrn)).setParents("INFUSION","TXINFUSION").setParentsHidden("ARCANEEAR").setConcealed().registerResearchItem();
 		        if (Loader.isModLoaded("Botania")) {
 		        	research.setPages(new ResearchPage("1B"), infusionPage("URN") );
@@ -84,21 +85,21 @@ public final class ModResearch {
         research.setPages(new ResearchPage("1"), infusionPage("STABILIZERBELT") );
        
         research = new FauxResearchItem("TXDISTILESSENTIA","TX","DISTILESSENTIA","ALCHEMY",7,-6,getOriginalItem("DISTILESSENTIA","ALCHEMY")).registerResearchItem();
-        if (ThaumicExploration.allowReplication) {
+        if (Config.allowReplication) {
           	  research = new TXResearchItem("REPLICATOR", "TX", new AspectList().add(Aspect.CRAFT, 10).add(Aspect.MECHANISM, 10).add(Aspect.ORDER, 6), 4,-5, 3, new ItemStack(ThaumicExploration.replicator)).setParents("DISTILESSENTIA","TXINFUSION","TXDISTILESSENTIA").setParentsHidden("INFUSION").setConcealed().registerResearchItem();
               research.setPages(new ResearchPage("1"), new ResearchPage("2"), infusionPage("REPLICATOR") );
         }
 
-        if (ThaumicExploration.allowCrucSouls) {
+        if (Config.allowCrucSouls) {
 	        research = new TXResearchItem("CRUCSOULS", "TX", new AspectList().add(Aspect.DEATH, 7).add(Aspect.HUNGER, 7).add(Aspect.SOUL, 8), 5,-7, 3, new ItemStack(ThaumicExploration.crucibleSouls)).setParents("DISTILESSENTIA","TXINFUSION","TXDISTILESSENTIA").setParentsHidden("BRAINCURE","INFUSION").setConcealed().registerResearchItem();
 	        research.setPages(new ResearchPage("1"), new ResearchPage("2"), infusionPage("CRUCSOULS") );
         }
-        if (ThaumicExploration.allowFood) {
+        if (Config.allowFood) {
 	        research = new TXResearchItem("TALISMANFOOD", "TX", new AspectList().add(Aspect.HUNGER, 5).add(Aspect.FLESH, 4).add(Aspect.CROP, 4),-1,-11, 2, new ItemStack(ThaumicExploration.talismanFood)).setParents("TXINFUSION","FLESHCURE").setParentsHidden("INFUSION").setConcealed().registerResearchItem();
 	        research.setPages(new ResearchPage("1"), infusionPage("TALISMANFOOD"));
         }
         
-        if (ThaumicExploration.allowBoots) {
+        if (Config.allowBoots) {
             research = new FauxResearchItem("TXBOOTSTRAVELLER","TX","BOOTSTRAVELLER","ARTIFICE",1,-4,getOriginalItem("BOOTSTRAVELLER","ARTIFICE")).setParents("TXINFUSION").registerResearchItem();
 	        research = new TXResearchItem("METEORBOOTS", "TX", new AspectList().add(Aspect.FIRE, 5).add(Aspect.ENERGY, 5).add(Aspect.TRAVEL, 10).add(Aspect.FLIGHT, 5), 2,-1 , 2, new ItemStack(ThaumicExploration.bootsMeteor)).setParents("TXBOOTSTRAVELLER","BOOTSTRAVELLER","FOCUSFIRE").setParentsHidden("INFUSION").setConcealed().registerResearchItem();
 	        research.setPages(new ResearchPage("1"), infusionPage("METEORBOOTS"));
@@ -110,15 +111,15 @@ public final class ModResearch {
         
 //        research = new TXResearchItem("ENHANCEDRUNICARMOR", "ARTIFICE", new AspectList().add(Aspect.ARMOR, 12).add(Aspect.ENERGY, 7).add(Aspect.MAGIC, 7).add(Aspect.AIR, 7).add(Aspect.MIND, 7).add(Aspect.ORDER, 5), 7,4, 3, new ItemStack(ThaumicExploration.enhancedChestRunic)).setParents("RUNICARMOR","RUNICARMORUPGRADES").setParentsHidden("RUNICBOOTS","INFUSION","RUNICGOGGLES","RUNICBOOTSTRAVELLER").setConcealed().registerResearchItem();
 //        research.setPages(new ResearchPage("1"),new ResearchPage("2"),infusionPage("EnhancedRunicArmorHelm"),infusionPage("EnhancedRunicArmorChest"),infusionPage("EnhancedRunicArmorLegs"),infusionPage("EnhancedRunicArmorBoots"));
-        if (ThaumicExploration.allowSojourner || ThaumicExploration.allowMechanist) {
+        if (Config.allowSojourner || Config.allowMechanist) {
         	research = new FauxResearchItem("TXCAP_thaumium","TX","CAP_thaumium","THAUMATURGY",-7,-7,getOriginalItem("CAP_thaumium","THAUMATURGY")).registerResearchItem();
         }
-        if (ThaumicExploration.allowSojourner) {
+        if (Config.allowSojourner) {
         	research = new TXResearchItem("CAP_SOJOURNER", "TX", new AspectList().add(Aspect.EXCHANGE, 5).add(Aspect.ENERGY, 5).add(Aspect.AURA, 8).add(Aspect.GREED, 5).add(Aspect.TOOL, 3), -5, -8, 2, new ItemStack(ThaumicExploration.sojournerCap)).setParents("TXCAP_thaumium","CAP_thaumium").setParentsHidden("WANDPED").setConcealed().registerResearchItem();
         	research.setPages(new ResearchPage("1"),arcaneRecipePage("UNCHARGEDSOJOURNER"),infusionPage("CAP_SOJOURNER"));
         }
         
-        if (ThaumicExploration.allowMechanist) {
+        if (Config.allowMechanist) {
         	research = new TXResearchItem("CAP_MECHANIST", "TX", new AspectList().add(Aspect.MECHANISM, 5).add(Aspect.ENERGY, 5).add(Aspect.AURA, 8).add(Aspect.GREED, 5).add(Aspect.TOOL, 3), -9, -6, 2, new ItemStack(ThaumicExploration.mechanistCap)).setParents("TXCAP_thaumium","CAP_thaumium").setParentsHidden("NODETAPPER2").setConcealed().registerResearchItem();
         	research.setPages(new ResearchPage("1"),arcaneRecipePage("UNCHARGEDMECHANIST"),infusionPage("CAP_MECHANIST"));
         }
@@ -126,7 +127,7 @@ public final class ModResearch {
         ResourceLocation taint = new ResourceLocation("thaumicexploration:textures/tabs/taintResearch2.png");
         research = new TXResearchItem("TAINTBASICS", "TX", new AspectList(), -9, 0, 0, taint).setAutoUnlock().setStub().setRound().registerResearchItem();
         research.setPages(new ResearchPage("1"), new ResearchPage("2"));
-        if (ThaumicExploration.allowTainturgy) {
+        if (Config.allowTainturgy) {
 	        research = new TXResearchItem("DREAMCATCHER", "TX", new AspectList().add(Aspect.MIND, 5).add(Aspect.TOOL, 5).add(Aspect.TAINT, 6), -7,2, 2, new ItemStack(ThaumicExploration.charmNoTaint)).setParents("TAINTBASICS").setHidden().setAspectTriggers(new Aspect[] { Aspect.TAINT }).registerResearchItem();
 	        research.setPages(new ResearchPage("1"), arcaneRecipePage("DREAMCATCHER")); 
         }
@@ -148,7 +149,7 @@ public final class ModResearch {
 //        research.setPages(test.toArray(new ResearchPage[0]));
 //        
 //        {
-        	if (ThaumicExploration.allowEnchants) {
+        	if (Config.allowEnchants) {
         		research = new FauxResearchItem("TXINFUSIONENCHANTMENT","TX","INFUSIONENCHANTMENT","ARTIFICE",-5,-6,getOriginalGraphic("INFUSIONENCHANTMENT","ARTIFICE")).registerResearchItem();
     	        //research = new TXResearchItem("ENCHBINDING", "ARTIFICE", new AspectList().add(Aspect.TRAP, 6).add(Aspect.ENTROPY, 5).add(Aspect.TRAVEL, 3), -8, 9, 1, new ResourceLocation("thaumicexploration:textures/tabs/binding.png")).setParents("INFUSIONENCHANTMENT").setConcealed().setSecondary().registerResearchItem();
     	       // research.setPages(new ResearchPage("1"), infusionEnchantPage("ENCHBINDING"));
@@ -176,7 +177,7 @@ public final class ModResearch {
         research = new TXResearchItem("ROD_NECROMANCER_staff", "TX", new AspectList().add(Aspect.TOOL, 5).add(Aspect.ENTROPY, 5).add(Aspect.DEATH, 8).add(Aspect.AURA, 4).add(Aspect.SOUL, 5), -3, 1, 3, new ItemStack(ThaumicExploration.necroStaffCore)).setParents("ROD_greatwood_staff","TXROD_greatwood_staff").setConcealed().registerResearchItem();
         research.setPages(new ResearchPage("1"), infusionPage("ROD_NECROMANCER_staff"));
 
-        if (ThaumicExploration.breadWand) {
+        if (Config.breadWand) {
 //            research = new TXResearchItem("ROD_BREAD", "THAUMATURGY", new AspectList().add(Aspect.MAGIC, 5).add(Aspect.CROP, 3).add(Aspect.HUNGER, 4).add(Aspect.HARVEST, 3), -11, 0, 1, new ItemStack(ThaumicExploration.breadCore)).setParents("ROD_AMBER").setConcealed().registerResearchItem().setSecondary();
 //            research.setPages(new ResearchPage("1"), infusionPage("ROD_BREAD"));
         }
@@ -184,7 +185,7 @@ public final class ModResearch {
         //Sealery
         ResourceLocation chestSeal = new ResourceLocation("thaumicexploration:textures/tabs/chestSeals.png");
         ResourceLocation jarSeal = new ResourceLocation("thaumicexploration:textures/tabs/jarSeals.png");
-        if (ThaumicExploration.allowBoundInventories) {
+        if (Config.allowBoundInventories) {
         	//research = new TXResearchItem("CHESTSEAL", "TX", new AspectList().add(Aspect.ELDRITCH, 5).add(Aspect.TRAP, 8).add(Aspect.TRAVEL, 5).add(Aspect.VOID,3), -9, -3, 2, chestSeal).setConcealed().setParentsHidden("MIRROR","TALLOW").registerResearchItem();
         	//research.setPages(new ResearchPage("1"),recipePage("BLANKSEAL"),cruciblePage("CHESTSEAL"));
         	research = new TXResearchItem("JARSEAL", "TX", new AspectList().add(Aspect.ELDRITCH, 5).add(Aspect.TRAP, 8).add(Aspect.MAGIC, 5).add(Aspect.TRAVEL,5), -7, -2, 1, jarSeal).setConcealed().registerResearchItem().setSecondary();
