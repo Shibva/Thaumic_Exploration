@@ -47,8 +47,8 @@ public class TileEntityTrashJar extends TileJarFillable {
 	    return false;
 	}
 	
-    public void updateEntity()
-    {
+    public void updateEntity() {
+    	/* Yeah, nah. This nukes performance super hard
     	if (Config.voidJarLightning) {
     		if (this.worldObj.isRemote) {
     	        for (int i=0;i<3;i++) {
@@ -58,7 +58,7 @@ public class TileEntityTrashJar extends TileJarFillable {
     	        	ThaumicExploration.instance.proxy.spawnLightningBolt(worldObj,pos2[0],pos2[1],pos2[2], pos1[0],pos1[1],pos1[2]);
     	        }
         	}
-    	}
+    	}*/
     	
     	if (this.amount > 0) {
     		ticks++;

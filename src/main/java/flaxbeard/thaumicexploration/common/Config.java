@@ -29,7 +29,7 @@ public class Config {
 	public static boolean allowMagicPlankReplication;
 	public static boolean allowModWoodReplication;
 	public static boolean allowModStoneReplication;
-	public static boolean voidJarLightning;
+	//public static boolean voidJarLightning;
 	
 	static Configuration config;
 
@@ -66,7 +66,7 @@ public class Config {
 		allowModWoodReplication = config.get("Replicator", "Allow replication of other mods' logs and planks", true).getBoolean(true);
 		allowModStoneReplication = config.get("Replicator", "Allow replication of other mods' stone blocks", true).getBoolean(true);
 		
-		voidJarLightning = config.get("Miscellaneous", "Enable effects on oblivion jar", false).getBoolean(false);
+		//voidJarLightning = config.get("Miscellaneous", "Enable effects on oblivion jar", false).getBoolean(false);
 		
 		config.save();
 	}
