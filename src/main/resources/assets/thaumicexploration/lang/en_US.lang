@@ -202,7 +202,7 @@ te.text.STABILIZERBELT.1=Using similar technology to that found in the thaumosta
 --Floating Candles
 te.name.FLOATCANDLE=Floating Candles
 te.tag.FLOATCANDLE=Wingardium Leviosa
-te.text.FLOATCANDLE.1=You always have felt that tallow candles are missing something... A touch of magic and an Aer shard should be enough to make them look right at home in any respected wizarding school. Floating candles can be placed in midair without a surface beneath them. These candles bob pleasingly, and add a touch of magic to any room.<BR><BR>Unfortunately, the candles don't seem to have an effect on infusion. You are sure that this will be fixed in the near future.
+te.text.FLOATCANDLE.1=You always have felt that tallow candles are missing something... A touch of magic and an Aer shard should be enough to make them look right at home in any respected wizarding school. Floating candles can be placed in midair without a surface beneath them. These candles bob pleasingly, and add a touch of magic to any room.<BR><BR>Like their more mundane counterparts, they can also be used to stabilise infusions.
 
 --Flesh Curing
 te.name.FLESHCURE=Flesh Purification
