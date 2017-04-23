@@ -13,8 +13,7 @@ public class DamageSourceTX extends DamageSource {
 		super(par1Str);
 	}
 	
-	public static DamageSource witherPlayerDamage(EntityLivingBase par0EntityLiving)
-	{
+	public static DamageSource witherPlayerDamage(EntityLivingBase par0EntityLiving) {
 	  return new EntityDamageSource("witherMask", par0EntityLiving);
 	}
 
