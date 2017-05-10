@@ -170,7 +170,7 @@ tile.thaumicexploration:autoSorter.name=Auto-sorter
 te.researchPrefix=[TX]
 tc.research_category.TAINT=Tainturgy
 tc.research_category.NECROMANCY=Necromancy
-tc.research_category.TX=Thaumic Esoterica
+tc.research_category.TX=Thaumic Exploration
 
 --Oblivion Jar
 te.name.TRASHJAR=Oblivion Jar
@@ -197,7 +197,7 @@ te.text.DISCOUNTRINGS.1=You have found a way to reduce the amount of vis used by
 --Thaumostatic Stabilizer
 te.name.STABILIZERBELT=Thaumostatic Stabilizer
 te.tag.STABILIZERBELT=Knockback nullifier
-te.text.STABILIZERBELT.1=Using similar technology to that found in the thaumostatic harness, you've created a special belt that nullifies the effect of knockback.<BR><BR>Any time you take damage, instead of being knocked around, you will instead remain in place. You have found this device to be extremely useful for not only flying using the harness, but also and travel at night.
+te.text.STABILIZERBELT.1=Using similar technology to that found in the thaumostatic harness, you've created a special belt that nullifies the effect of knockback.<BR><BR>Any time you take damage, instead of being knocked around, you will instead remain in place. You have found this device to be extremely useful for not only flying using the harness, but also for travel at night.
 
 --Floating Candles
 te.name.FLOATCANDLE=Floating Candles

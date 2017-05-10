@@ -30,7 +30,7 @@ public class ItemFoodTalisman extends Item {
 	public ItemFoodTalisman() {
 		super();
 		this.maxStackSize = 1;
-		//this.setMaxDamage(100);
+		this.setMaxDamage(100);
 		foodBlacklist.add(ConfigItems.itemManaBean.getUnlocalizedName());
 		foodBlacklist.add(ConfigItems.itemZombieBrain.getUnlocalizedName());
 		foodBlacklist.add("item.foodstuff.0.name");
@@ -134,6 +134,9 @@ public class ItemFoodTalisman extends Item {
 				par1ItemStack.setItemDamage(par1ItemStack.getItemDamage());
 			}
 		}
+		//TODO WIP shit
+		par1ItemStack.setItemDamage( par1ItemStack.getMaxDamage()-((int) par1ItemStack.stackTagCompound.getFloat("food")) );
+		//par1ItemStack.stackTagCompound.getFloat("food")
 	}
 
 	private boolean isEdible(ItemStack food, EntityPlayer player) {

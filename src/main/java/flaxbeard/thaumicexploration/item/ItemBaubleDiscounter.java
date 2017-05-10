@@ -8,6 +8,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.StatCollector;
+import thaumcraft.api.IRunicArmor;
 import thaumcraft.api.IVisDiscountGear;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
@@ -15,7 +16,7 @@ import baubles.api.BaubleType;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemBaubleDiscounter extends ItemBauble implements IVisDiscountGear {
+public class ItemBaubleDiscounter extends ItemBauble implements IVisDiscountGear, IRunicArmor {
 
 	private int percent;
 	private AspectList aspects;
@@ -63,5 +64,10 @@ public class ItemBaubleDiscounter extends ItemBauble implements IVisDiscountGear
 			}
 		}
 		super.addInformation(stack, player, list, par4);
+	}
+
+	@Override
+	public int getRunicCharge(ItemStack arg0) {
+		return 0;
 	}
 }
