@@ -2,16 +2,18 @@ package flaxbeard.thaumicexploration.item;
 
 import java.util.UUID;
 
+import thaumcraft.api.IRunicArmor;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import baubles.api.BaubleType;
 import baubles.api.IBauble;
 
-public class ItemBauble extends Item implements IBauble {
+public class ItemBauble extends Item implements IBauble, IRunicArmor {
 	public BaubleType baubleType;
 	
 	public ItemBauble(BaubleType t) {
@@ -44,6 +46,17 @@ public class ItemBauble extends Item implements IBauble {
 	@Override
 	public boolean canUnequip(ItemStack arg0, EntityLivingBase arg1) {
 		return true;
+	}
+	
+	@Override
+	public EnumRarity getRarity(ItemStack itemstack)
+	{
+		return EnumRarity.uncommon; //
+	}
+
+	@Override
+	public int getRunicCharge(ItemStack arg0) {
+		return 0;
 	}
 
 }

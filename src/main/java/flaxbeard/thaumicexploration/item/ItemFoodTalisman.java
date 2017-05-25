@@ -9,9 +9,11 @@ import java.util.Map;
 import com.mojang.authlib.GameProfile;
 
 import cpw.mods.fml.common.Loader;
+import flaxbeard.thaumicexploration.ThaumicExploration;
 import flaxbeard.thaumicexploration.interop.AppleCoreInterop;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
@@ -197,6 +199,12 @@ public class ItemFoodTalisman extends Item {
 		}
 		foodCache.put(foodName.toLowerCase(),false);
 		return false;
+	}
+	
+	@Override
+	public EnumRarity getRarity(ItemStack itemstack)
+	{
+		return EnumRarity.uncommon; //
 	}
 
 }

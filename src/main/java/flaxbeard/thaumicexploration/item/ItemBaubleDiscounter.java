@@ -4,6 +4,7 @@ import java.util.List;
 
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.IIcon;
@@ -16,7 +17,7 @@ import baubles.api.BaubleType;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemBaubleDiscounter extends ItemBauble implements IVisDiscountGear, IRunicArmor {
+public class ItemBaubleDiscounter extends ItemBauble implements IVisDiscountGear {
 
 	private int percent;
 	private AspectList aspects;
@@ -47,9 +48,6 @@ public class ItemBaubleDiscounter extends ItemBauble implements IVisDiscountGear
 		return 0;
 	}
 	
- 
-    
-	
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4)
 	{
 		if (getVisDiscount(stack, player, null) > 0) {
@@ -65,9 +63,5 @@ public class ItemBaubleDiscounter extends ItemBauble implements IVisDiscountGear
 		}
 		super.addInformation(stack, player, list, par4);
 	}
-
-	@Override
-	public int getRunicCharge(ItemStack arg0) {
-		return 0;
-	}
+	
 }

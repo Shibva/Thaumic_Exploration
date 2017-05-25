@@ -36,12 +36,12 @@ thaumicexploration.bread3=Bonjour, monsieur.
 thaumicexploration.bread4=Mangez-moi, s'il vous plait.
 
 
-item.thaumicexploration:discountRing:0.name=Ring of Air
-item.thaumicexploration:discountRing:1.name=Ring of Earth
-item.thaumicexploration:discountRing:2.name=Ring of Fire
-item.thaumicexploration:discountRing:3.name=Ring of Water
-item.thaumicexploration:discountRing:4.name=Ring of Order
-item.thaumicexploration:discountRing:5.name=Ring of Entropy
+item.thaumicexploration:discountRing:0.name=Ring of Aer
+item.thaumicexploration:discountRing:1.name=Ring of Terra
+item.thaumicexploration:discountRing:2.name=Ring of Ignis
+item.thaumicexploration:discountRing:3.name=Ring of Aqua
+item.thaumicexploration:discountRing:4.name=Ring of Ordo
+item.thaumicexploration:discountRing:5.name=Ring of Perditio
 
 tc.aspect.Necromantic Energy=Energy of the Undead
 
