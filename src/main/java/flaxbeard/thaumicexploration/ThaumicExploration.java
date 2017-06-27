@@ -439,14 +439,22 @@ public class ThaumicExploration {
 		WAND_CAP_MECHANIST.setTexture(new ResourceLocation("thaumicexploration:textures/models/capMechanist.png"));
 		
 		//WandRod.rods.put("transmutation1", WAND_ROD_CRYSTAL1);
-		enchantmentBinding = new EnchantmentBinding(Config.enchantmentBindingID, 1);
-		enchantmentNightVision = new EnchantmentNightVision(Config.enchantmentNightVisionID, 1);
-		enchantmentDisarm = new EnchantmentDisarm(Config.enchantmentDisarmID, 1);
+		
+		if (Config.enchantmentBindingEnable){
+			enchantmentBinding = new EnchantmentBinding(Config.enchantmentBindingID, 1);
+		}
+		if (Config.enchantmentNVEnable) {
+			enchantmentNightVision = new EnchantmentNightVision(Config.enchantmentNightVisionID, 1);
+		}
+		if (Config.enchantmentDisarmEnable) {
+			enchantmentDisarm = new EnchantmentDisarm(Config.enchantmentDisarmID, 1); 
+		}
+		
+		
 		if (Loader.isModLoaded("ThaumicTinkerer")) {
 			TTIntegration.registerEnchants();
 		}
-		if(Loader.isModLoaded("Waila"))
-		{
+		if(Loader.isModLoaded("Waila")) {
 			FMLInterModComms.sendMessage("Waila","register","flaxbeard.thaumicexploration.interop.WailaConfig.callbackRegister");
 		}
 	    EntityRegistry.registerModEntity(EntityTaintacleMinion.class, "TaintacleMinion", 0, ThaumicExploration.instance, 64, 3, false);

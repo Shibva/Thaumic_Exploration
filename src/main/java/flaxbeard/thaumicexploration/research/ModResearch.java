@@ -153,13 +153,18 @@ public final class ModResearch {
         		research = new FauxResearchItem("TXINFUSIONENCHANTMENT","TX","INFUSIONENCHANTMENT","ARTIFICE",-5,-6,getOriginalGraphic("INFUSIONENCHANTMENT","ARTIFICE")).registerResearchItem();
     	        //research = new TXResearchItem("ENCHBINDING", "ARTIFICE", new AspectList().add(Aspect.TRAP, 6).add(Aspect.ENTROPY, 5).add(Aspect.TRAVEL, 3), -8, 9, 1, new ResourceLocation("thaumicexploration:textures/tabs/binding.png")).setParents("INFUSIONENCHANTMENT").setConcealed().setSecondary().registerResearchItem();
     	       // research.setPages(new ResearchPage("1"), infusionEnchantPage("ENCHBINDING"));
-    	        research = new TXResearchItem("ENCHBINDING", "TX", new AspectList().add(Aspect.TRAP, 6).add(Aspect.ENTROPY, 5).add(Aspect.TRAVEL, 3), -7, -4, 1, new ResourceLocation("thaumicexploration:textures/tabs/binding.png")).setParents("TXINFUSIONENCHANTMENT","INFUSIONENCHANTMENT").setConcealed().setSecondary().registerResearchItem();
-    	        research.setPages(new ResearchPage("1"), infusionEnchantPage("ENCHBINDING"));
-        	
-		        research = new TXResearchItem("ENCHNIGHTVISION", "TX", new AspectList().add(Aspect.SENSES, 6).add(Aspect.DARKNESS, 2).add(Aspect.LIGHT, 6), -5, -4, 1, new ResourceLocation("thaumicexploration:textures/tabs/nightVision.png")).setParents("TXINFUSIONENCHANTMENT","INFUSIONENCHANTMENT").setConcealed().setSecondary().registerResearchItem();
-		        research.setPages(new ResearchPage("1"), infusionEnchantPage("ENCHNIGHTVISION"));
-		        research = new TXResearchItem("ENCHDISARM", "TX", new AspectList().add(Aspect.SLIME, 6).add(Aspect.TRAP, 4).add(Aspect.WEAPON, 4), -3, -4, 1, new ResourceLocation("thaumicexploration:textures/tabs/disarm.png")).setParents("TXINFUSIONENCHANTMENT","INFUSIONENCHANTMENT").setConcealed().setSecondary().registerResearchItem();
-		        research.setPages(new ResearchPage("1"), infusionEnchantPage("ENCHDISARM"));
+        		if (Config.enchantmentBindingEnable) {
+	        		research = new TXResearchItem("ENCHBINDING", "TX", new AspectList().add(Aspect.TRAP, 6).add(Aspect.ENTROPY, 5).add(Aspect.TRAVEL, 3), -7, -4, 1, new ResourceLocation("thaumicexploration:textures/tabs/binding.png")).setParents("TXINFUSIONENCHANTMENT","INFUSIONENCHANTMENT").setConcealed().setSecondary().registerResearchItem();
+	    	        research.setPages(new ResearchPage("1"), infusionEnchantPage("ENCHBINDING"));
+        		}
+        		if (Config.enchantmentNVEnable) {
+			        research = new TXResearchItem("ENCHNIGHTVISION", "TX", new AspectList().add(Aspect.SENSES, 6).add(Aspect.DARKNESS, 2).add(Aspect.LIGHT, 6), -5, -4, 1, new ResourceLocation("thaumicexploration:textures/tabs/nightVision.png")).setParents("TXINFUSIONENCHANTMENT","INFUSIONENCHANTMENT").setConcealed().setSecondary().registerResearchItem();
+			        research.setPages(new ResearchPage("1"), infusionEnchantPage("ENCHNIGHTVISION"));
+        		}
+        		if (Config.enchantmentDisarmEnable) {
+			        research = new TXResearchItem("ENCHDISARM", "TX", new AspectList().add(Aspect.SLIME, 6).add(Aspect.TRAP, 4).add(Aspect.WEAPON, 4), -3, -4, 1, new ResourceLocation("thaumicexploration:textures/tabs/disarm.png")).setParents("TXINFUSIONENCHANTMENT","INFUSIONENCHANTMENT").setConcealed().setSecondary().registerResearchItem();
+			        research.setPages(new ResearchPage("1"), infusionEnchantPage("ENCHDISARM"));
+        		}
         	}
         
         //Wandcraft
