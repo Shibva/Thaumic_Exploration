@@ -173,17 +173,21 @@ public final class ModRecipes {
 				new ItemStack(Blocks.netherrack), new ItemStack(Blocks.netherrack),
 				new ItemStack(Blocks.netherrack), new ItemStack(ConfigItems.itemFocusFire));
 		
-		registerResearchItemIE("ENCHBINDING","ENCHBINDING", Enchantment.enchantmentsList[ThaumicExploration.enchantmentBinding.effectId], 3, 
-				new AspectList().add(Aspect.TRAP, 8).add(Aspect.ENTROPY, 4).add(Aspect.TRAVEL, 4), 
-				new ItemStack(Items.iron_sword), new ItemStack(ConfigItems.itemResource, 1, 14), new ItemStack(Blocks.soul_sand));
-		
-		registerResearchItemIE("ENCHDISARM","ENCHDISARM", Enchantment.enchantmentsList[ThaumicExploration.enchantmentDisarm.effectId], 5, 
-				new AspectList().add(Aspect.WEAPON, 4).add(Aspect.SLIME, 8).add(Aspect.TRAP, 4), 
-				new ItemStack(Items.iron_sword), new ItemStack(ConfigItems.itemResource, 1, 14), new ItemStack(Items.slime_ball));
-		
-		registerResearchItemIE("ENCHNIGHTVISION","ENCHNIGHTVISION", Enchantment.enchantmentsList[ThaumicExploration.enchantmentNightVision.effectId], 5, 
-				new AspectList().add(Aspect.SENSES, 16).add(Aspect.DARKNESS, 8).add(Aspect.LIGHT, 16), 
-				new ItemStack(Items.golden_carrot), new ItemStack(ConfigItems.itemResource, 1, 14), new ItemStack(Items.golden_carrot));
+		if (Config.enchantmentBindingEnable) {	
+			registerResearchItemIE("ENCHBINDING","ENCHBINDING", Enchantment.enchantmentsList[ThaumicExploration.enchantmentBinding.effectId], 3, 
+					new AspectList().add(Aspect.TRAP, 8).add(Aspect.ENTROPY, 4).add(Aspect.TRAVEL, 4), 
+					new ItemStack(Items.iron_sword), new ItemStack(ConfigItems.itemResource, 1, 14), new ItemStack(Blocks.soul_sand));
+		}
+		if (Config.enchantmentDisarmEnable) {
+			registerResearchItemIE("ENCHDISARM","ENCHDISARM", Enchantment.enchantmentsList[ThaumicExploration.enchantmentDisarm.effectId], 5, 
+					new AspectList().add(Aspect.WEAPON, 4).add(Aspect.SLIME, 8).add(Aspect.TRAP, 4), 
+					new ItemStack(Items.iron_sword), new ItemStack(ConfigItems.itemResource, 1, 14), new ItemStack(Items.slime_ball));
+		}
+		if (Config.enchantmentNVEnable) {
+			registerResearchItemIE("ENCHNIGHTVISION","ENCHNIGHTVISION", Enchantment.enchantmentsList[ThaumicExploration.enchantmentNightVision.effectId], 5, 
+					new AspectList().add(Aspect.SENSES, 16).add(Aspect.DARKNESS, 8).add(Aspect.LIGHT, 16), 
+					new ItemStack(Items.golden_carrot), new ItemStack(ConfigItems.itemResource, 1, 14), new ItemStack(Items.golden_carrot));
+		}
 		
 		registerResearchItemI("TALISMANFOOD", new ItemStack(ThaumicExploration.talismanFood), 5, 
 				new AspectList().add(Aspect.HUNGER, 30).add(Aspect.FLESH, 25).add(Aspect.CROP, 25).add(Aspect.EXCHANGE,10), 

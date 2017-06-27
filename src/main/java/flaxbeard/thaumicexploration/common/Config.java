@@ -11,6 +11,10 @@ public class Config {
 	public static int enchantmentNightVisionID;
 	public static int enchantmentDisarmID;
 	
+	public static boolean enchantmentBindingEnable;
+	public static boolean enchantmentNVEnable;
+	public static boolean enchantmentDisarmEnable;
+	
 	public static boolean prefix;
 	public static boolean breadWand;
 	public static boolean brainsGolem;
@@ -44,6 +48,11 @@ public class Config {
 		enchantmentBindingID = config.get("Enchantment", "Binding", 77).getInt();
 		enchantmentNightVisionID = config.get("Enchantment", "Night Vision", 78).getInt();
 		enchantmentDisarmID = config.get("Enchantment", "Disarming", 79).getInt();
+		
+		enchantmentBindingEnable = config.get("Enchantment", "Binding enabled", true).getBoolean(true);
+		enchantmentNVEnable = config.get("Enchantment", "Night Vision enabled", true).getBoolean(true);
+		enchantmentDisarmEnable = config.get("Enchantment", "Disarm enabled", true).getBoolean(true);
+		
 
 		//allowOsmotic = config.get("Miscellaneous", "Add new enchantments to Thaumic Tinkerer's Osmotic Enchanter (Requires TT Build 72+)", true).getBoolean(true);
 		prefix = config.get("Miscellaneous", "Display [TX] prefix before Thaumic Exploration research", true).getBoolean(true);
