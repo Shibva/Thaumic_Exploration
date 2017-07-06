@@ -9,7 +9,7 @@ import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import cpw.mods.fml.relauncher.ReflectionHelper;
 import flaxbeard.thaumicexploration.ThaumicExploration;
-import flaxbeard.thaumicexploration.common.Config;
+import flaxbeard.thaumicexploration.common.ConfigTX;
 import thaumic.tinkerer.common.enchantment.EnchantmentVampirism;
 import thaumic.tinkerer.common.enchantment.core.EnchantmentManager;
 import thaumic.tinkerer.common.lib.LibEnchantIDs;
@@ -19,11 +19,11 @@ import thaumic.tinkerer.common.lib.LibResearch;
 public class TTIntegration {
 
 	public static void registerEnchants() {
-		if (Config.enchantmentBindingEnable)
+		if (ConfigTX.enchantmentBindingEnable)
 			EnchantmentManager.registerExponentialCostData(ThaumicExploration.enchantmentBinding, "thaumicexploration:textures/tabs/binding.png", false, new AspectList().add(Aspect.ENTROPY, 15).add(Aspect.ORDER, 15), "ENCHBINDING");
-		if (Config.enchantmentNVEnable)
+		if (ConfigTX.enchantmentNVEnable)
 			EnchantmentManager.registerExponentialCostData(ThaumicExploration.enchantmentNightVision, "thaumicexploration:textures/tabs/nightVision.png", false, new AspectList().add(Aspect.ENTROPY, 20).add(Aspect.FIRE, 10).add(Aspect.ORDER, 20), "ENCHNIGHTVISION");
-		if (Config.enchantmentDisarmEnable)
+		if (ConfigTX.enchantmentDisarmEnable)
 			EnchantmentManager.registerExponentialCostData(ThaumicExploration.enchantmentDisarm, "thaumicexploration:textures/tabs/disarm.png", false, new AspectList().add(Aspect.AIR, 12).add(Aspect.ORDER, 7).add(Aspect.ENTROPY, 7), "ENCHDISARM");
 		
 	}

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import cpw.mods.fml.common.Loader;
+import flaxbeard.thaumicexploration.common.ConfigTX;
 import flaxbeard.thaumicexploration.integration.TTIntegration;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
@@ -343,8 +344,10 @@ public class TXBootsEventHandler
     
   }
   
+  //TODO boot effect
   public void checkAir(EntityPlayer player)
   {  
+	//meteor boots
     if ((player.inventory.armorItemInSlot(0) != null) && (player.inventory.armorItemInSlot(0).getItem()== ThaumicExploration.bootsMeteor)) {
       
       Vec3 vector = player.getLook(1.0F);
@@ -372,10 +375,21 @@ public class TXBootsEventHandler
     	  ticks = 0;
     	  ticksAir = 0;
     	  if (size > 0) {
-
     		  player.worldObj.createExplosion(player, player.posX, player.posY, player.posZ, size, false);
       	  }
       }
+      
+      //COME ON AND SLAM
+      if (!player.onGround && !player.isOnLadder() && !player.isInWater()  ) {
+    	  if (!player.isSneaking() ) {
+    		  ticksAir++;  
+    	  }
+		  
+    	  if (player.isSneaking() && ticksAir > 5) {
+    		  smashing = true;
+    	  }
+      }
+      
       if (player.capabilities.isFlying) {
     	  smashing = false;
     	  ticks = 0;
@@ -393,15 +407,16 @@ public class TXBootsEventHandler
       {
     	  double motion = Math.abs(player.motionX) + Math.abs(player.motionZ) + Math.abs(0.5*player.motionY);
     	  if (!player.isWet() && motion > 0.1F) {
-
-    	  player.worldObj.spawnParticle("flame", (double)(player.posX + Math.random()-0.5F), (double)(player.boundingBox.minY + 0.25F + ((Math.random()-0.5)*0.25F)), (double)(player.posZ + Math.random()-0.5F), 0.0D, 0.025D, 0.0D);
-    	  player.worldObj.spawnParticle("flame", (double)(player.posX + Math.random()-0.5F), (double)(player.boundingBox.minY + 0.25F + ((Math.random()-0.5)*0.25F)), (double)(player.posZ + Math.random()-0.5F), 0.0D, 0.025D, 0.0D);
+    		  player.worldObj.spawnParticle("flame", (double)(player.posX + Math.random()-0.5F), (double)(player.boundingBox.minY + 0.25F + ((Math.random()-0.5)*0.25F)), (double)(player.posZ + Math.random()-0.5F), 0.0D, 0.025D, 0.0D);
+    		  //player.worldObj.spawnParticle("flame", (double)(player.posX + Math.random()-0.5F), (double)(player.boundingBox.minY + 0.25F + ((Math.random()-0.5)*0.25F)), (double)(player.posZ + Math.random()-0.5F), 0.0D, 0.025D, 0.0D);
     	  }
       }
       item.stackTagCompound.setBoolean("IsSmashing", smashing);
       item.stackTagCompound.setInteger("smashTicks", ticks);
       item.stackTagCompound.setInteger("airTicks", ticksAir);
     }
+    
+    //comet boots
     else if ((player.inventory.armorItemInSlot(0) != null) && (player.inventory.armorItemInSlot(0).getItem()== ThaumicExploration.bootsComet)) {
         
         Vec3 vector = player.getLook(1.0F);
@@ -411,14 +426,20 @@ public class TXBootsEventHandler
   			item.setTagCompound(par1NBTTagCompound );
   			item.stackTagCompound.setInteger("runTicks",0);
         }
-        for (int x = -5; x < 6; x++) {
-      	  for (int z = -5; z < 6; z++) {
-  		      if ((player.worldObj.getBlock((int) (player.posX + x), (int) (player.posY-1), (int) (player.posZ + z)) == Blocks.water || player.worldObj.getBlock((int) (player.posX + x), (int) (player.posY-1), (int) (player.posZ + z)) == Blocks.water) && player.worldObj.getBlock((int) (player.posX + x), (int) player.posY-1, (int) (player.posZ + z)).getMaterial() == Material.water && player.worldObj.getBlockMetadata((int) (player.posX + x), (int) player.posY-1, (int) (player.posZ + z)) == 0 && !player.isInWater() && (Math.abs(x)+Math.abs(z) < 8)) {
-  		    	  player.worldObj.setBlock((int) (player.posX + x), (int) player.posY-1, (int) (player.posZ + z), ThaumicExploration.meltyIce);
-  		    	player.worldObj.spawnParticle("snowballpoof", (int) (player.posX + x), (int) player.posY, (int) (player.posZ + z), 0.0D, 0.025D, 0.0D);
-  		      }
-      	  }
+        
+        //anti-griefing config
+        if (ConfigTX.allowBootsIce) {
+	        for (int x = -5; x < 6; x++) {
+	      	  for (int z = -5; z < 6; z++) {
+	  		      if ((player.worldObj.getBlock((int) (player.posX + x), (int) (player.posY-1), (int) (player.posZ + z)) == Blocks.water || player.worldObj.getBlock((int) (player.posX + x), (int) (player.posY-1), (int) (player.posZ + z)) == Blocks.water) && player.worldObj.getBlock((int) (player.posX + x), (int) player.posY-1, (int) (player.posZ + z)).getMaterial() == Material.water && player.worldObj.getBlockMetadata((int) (player.posX + x), (int) player.posY-1, (int) (player.posZ + z)) == 0 && !player.isInWater() && (Math.abs(x)+Math.abs(z) < 8)) {
+	  		    	  player.worldObj.setBlock((int) (player.posX + x), (int) player.posY-1, (int) (player.posZ + z), ThaumicExploration.meltyIce);
+	  		    	  player.worldObj.spawnParticle("snowballpoof", (int) (player.posX + x), (int) player.posY, (int) (player.posZ + z), 0.0D, 0.025D, 0.0D);
+	  		      }
+	      	  }
+	        }
         }
+        
+        
         int ticks = item.stackTagCompound.getInteger("runTicks");
 
        
@@ -434,8 +455,8 @@ public class TXBootsEventHandler
 		}
 		
 		if (!player.isWet() && motion > 0.1F  ) {
-			 player.worldObj.spawnParticle("snowballpoof", (double)(player.posX + Math.random()-0.5F), (double)(player.boundingBox.minY + 0.25F + ((Math.random()-0.5)*0.25F)), (double)(player.posZ + Math.random()-0.5F), 0.0D, 0.025D, 0.0D);
-	    	  player.worldObj.spawnParticle("snowballpoof", (double)(player.posX + Math.random()-0.5F), (double)(player.boundingBox.minY + 0.25F + ((Math.random()-0.5)*0.25F)), (double)(player.posZ + Math.random()-0.5F), 0.0D, 0.025D, 0.0D);
+			player.worldObj.spawnParticle("fireworksSpark", (double)(player.posX + Math.random()-0.5F), (double)(player.boundingBox.minY + 0.25F + ((Math.random()-0.5)*0.25F)), (double)(player.posZ + Math.random()-0.5F), 0.0D, 0.025D, 0.0D);
+	    	//player.worldObj.spawnParticle("snowballpoof", (double)(player.posX + Math.random()-0.5F), (double)(player.boundingBox.minY + 0.25F + ((Math.random()-0.5)*0.25F)), (double)(player.posZ + Math.random()-0.5F), 0.0D, 0.025D, 0.0D);
 		}
         
         item.stackTagCompound.setInteger("runTicks", ticks);

@@ -72,7 +72,7 @@ import flaxbeard.thaumicexploration.chunkLoader.ChunkLoaderCallback;
 import flaxbeard.thaumicexploration.commands.CommandAlterRate;
 import flaxbeard.thaumicexploration.commands.CommandCheckWarp;
 import flaxbeard.thaumicexploration.common.CommonProxy;
-import flaxbeard.thaumicexploration.common.Config;
+import flaxbeard.thaumicexploration.common.ConfigTX;
 import flaxbeard.thaumicexploration.enchantment.EnchantmentBinding;
 import flaxbeard.thaumicexploration.enchantment.EnchantmentDisarm;
 import flaxbeard.thaumicexploration.enchantment.EnchantmentNightVision;
@@ -265,7 +265,7 @@ public class ThaumicExploration {
 			}
 		}
 		
-		Config.loadConfig(event);
+		ConfigTX.loadConfig(event);
 		
 		tab = new TXTab(CreativeTabs.getNextID(), "thaumicExploration");
 		
@@ -314,7 +314,7 @@ public class ThaumicExploration {
 		GameRegistry.registerItem(amberStaffCore, "amberStaffCore");
 		necroStaffCore = new Item().setUnlocalizedName("thaumicexploration:necroStaffCore").setCreativeTab(tab).setTextureName("thaumicexploration:rodNecro_staff");
 		GameRegistry.registerItem(necroStaffCore, "necroStaffCore");
-		if (Config.breadWand) {
+		if (ConfigTX.breadWand) {
 			breadCore = new Item().setUnlocalizedName("thaumicexploration:breadCore").setCreativeTab(tab).setTextureName("thaumicexploration:rodBread");
 			GameRegistry.registerItem(breadCore, "breadCore");
 		}
@@ -429,7 +429,7 @@ public class ThaumicExploration {
 		STAFF_ROD_CRYSTAL = new StaffRodTransmutative("TRANSMUTATION",175,new ItemStack(ThaumicExploration.transmutationStaffCore),14,new WandRodTransmutationOnUpdate(), new ResourceLocation("thaumicexploration:textures/models/0.png"));
 		STAFF_ROD_NECRO = new StaffRod("NECROMANCER",200,new ItemStack(ThaumicExploration.necroStaffCore),15,new WandRodNecromancerOnUpdate(), new ResourceLocation("thaumicexploration:textures/models/rodNecro.png"));
 		//STAFF_ROD_NECRO.setRunes(true);
-		if (Config.breadWand) {
+		if (ConfigTX.breadWand) {
 			WAND_ROD_BREAD = new WandRod("BREAD",39,new ItemStack(ThaumicExploration.breadCore),8,new WandRodBreadOnUpdate(), new ResourceLocation("thaumicexploration:textures/models/rodBread.png"));
 		}
 		WAND_CAP_SOJOURNER = new WandCap("SOJOURNER", 0.95F, new ItemStack(ThaumicExploration.sojournerCap), 6);
@@ -440,14 +440,14 @@ public class ThaumicExploration {
 		
 		//WandRod.rods.put("transmutation1", WAND_ROD_CRYSTAL1);
 		
-		if (Config.enchantmentBindingEnable){
-			enchantmentBinding = new EnchantmentBinding(Config.enchantmentBindingID, 1);
+		if (ConfigTX.enchantmentBindingEnable){
+			enchantmentBinding = new EnchantmentBinding(ConfigTX.enchantmentBindingID, 1);
 		}
-		if (Config.enchantmentNVEnable) {
-			enchantmentNightVision = new EnchantmentNightVision(Config.enchantmentNightVisionID, 1);
+		if (ConfigTX.enchantmentNVEnable) {
+			enchantmentNightVision = new EnchantmentNightVision(ConfigTX.enchantmentNightVisionID, 1);
 		}
-		if (Config.enchantmentDisarmEnable) {
-			enchantmentDisarm = new EnchantmentDisarm(Config.enchantmentDisarmID, 1); 
+		if (ConfigTX.enchantmentDisarmEnable) {
+			enchantmentDisarm = new EnchantmentDisarm(ConfigTX.enchantmentDisarmID, 1); 
 		}
 		
 		
@@ -467,8 +467,8 @@ public class ThaumicExploration {
 //		enhancedLegsRunic2 = new ItemEnhancedRunicArmor(2,enhancedLegsRunic2ID, ThaumcraftApi.armorMatSpecial, 0, 2).setUnlocalizedName("thaumicexploration:enhancedLeggingsRunic");
 //		enhancedBootsRunic2 = new ItemEnhancedRunicArmor(2,enhancedBootsRunic2ID, ThaumcraftApi.armorMatSpecial, 0, 3).setUnlocalizedName("thaumicexploration:enhancedBootsRunic");
 
-		potionBinding = (new TXPotion(Config.potionBindingID, false, 0)).setIconIndex(0, 0).setPotionName("potion.binding");
-		potionTaintWithdrawl = (new TXTaintPotion(Config.potionTaintWithdrawlID, true, 0)).setPotionName("potion.taintWithdrawl");
+		potionBinding = (new TXPotion(ConfigTX.potionBindingID, false, 0)).setIconIndex(0, 0).setPotionName("potion.binding");
+		potionTaintWithdrawl = (new TXTaintPotion(ConfigTX.potionTaintWithdrawlID, true, 0)).setPotionName("potion.taintWithdrawl");
 		
 		
 		proxy.registerRenderers();
@@ -503,8 +503,8 @@ public class ThaumicExploration {
 	    					allowedItems.add(MutablePair.of(is.getItem(),is.getItemDamage()));
 	    	        }
 	    		}
-	    		if (Config.allowModWoodReplication) {
-		    		if (Config.allowMagicPlankReplication) {
+	    		if (ConfigTX.allowModWoodReplication) {
+		    		if (ConfigTX.allowMagicPlankReplication) {
 			    		if (ore.equals("plankWood")) {
 			    			for (ItemStack is : OreDictionary.getOres(ore)) {
 			    				AspectList ot = ThaumcraftCraftingManager.getObjectTags(is);
@@ -553,12 +553,12 @@ public class ThaumicExploration {
 	    			allowedItems.add(MutablePair.of(Item.getItemFromBlock(Blocks.log),OreDictionary.WILDCARD_VALUE));
 	    			allowedItems.add(MutablePair.of(Item.getItemFromBlock(Blocks.log2),OreDictionary.WILDCARD_VALUE));
 	    			allowedItems.add(MutablePair.of(Item.getItemFromBlock(Blocks.planks),OreDictionary.WILDCARD_VALUE));
-	    			if (Config.allowMagicPlankReplication) {
+	    			if (ConfigTX.allowMagicPlankReplication) {
 	    				allowedItems.add(MutablePair.of(Item.getItemFromBlock(ConfigBlocks.blockWoodenDevice),6));
 	    				allowedItems.add(MutablePair.of(Item.getItemFromBlock(ConfigBlocks.blockWoodenDevice),7));
 	    			}	
 	    		}
-	    		if (Config.allowModStoneReplication) {
+	    		if (ConfigTX.allowModStoneReplication) {
 		    		if (ore.equals("stone")) {
 		    			for (ItemStack is : OreDictionary.getOres(ore)) {
 		    				AspectList ot = ThaumcraftCraftingManager.getObjectTags(is);

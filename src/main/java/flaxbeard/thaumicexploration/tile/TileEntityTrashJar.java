@@ -5,7 +5,7 @@ import net.minecraftforge.common.util.ForgeDirection;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.common.tiles.TileJarFillable;
 import flaxbeard.thaumicexploration.ThaumicExploration;
-import flaxbeard.thaumicexploration.common.Config;
+import flaxbeard.thaumicexploration.common.ConfigTX;
 
 public class TileEntityTrashJar extends TileJarFillable {
 	int ticks = 0;

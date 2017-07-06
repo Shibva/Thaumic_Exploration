@@ -3,7 +3,7 @@ package flaxbeard.thaumicexploration.common;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.common.config.Configuration;
 
-public class Config {
+public class ConfigTX {
 	
 	public static int potionTaintWithdrawlID;
 	public static int potionBindingID;
@@ -23,9 +23,10 @@ public class Config {
 	public static boolean allowCrucSouls;
 	public static boolean allowThinkTank;
 	public static boolean allowFood;
-	public static boolean allowUrn;
-	public static boolean allowbUrn;
+	public static boolean allowUrnWater;
+	public static boolean allowUrnLava;
 	public static boolean allowBoots;
+	public static boolean allowBootsIce;
 	public static boolean allowSojourner;
 	public static boolean allowMechanist;
 	public static boolean allowEnchants;
@@ -56,7 +57,7 @@ public class Config {
 
 		//allowOsmotic = config.get("Miscellaneous", "Add new enchantments to Thaumic Tinkerer's Osmotic Enchanter (Requires TT Build 72+)", true).getBoolean(true);
 		prefix = config.get("Miscellaneous", "Display [TX] prefix before Thaumic Exploration research", true).getBoolean(true);
-		breadWand = config.get("Easter Eggs", "Enable Thaumic Frenchurgy", false).getBoolean(true);
+		breadWand = config.get("Easter Eggs", "Enable Thaumic Frenchurgy", false).getBoolean(false);
 		brainsGolem = config.get("Miscellaneous", "Use Purified Brains in advanced golems", true).getBoolean(true);
 		//taintBloom = config.get("Miscellaneous", "Move the Etheral Bloom to the Tainturgy tab", true).getBoolean(true);
 		allowBoundInventories = config.get("Miscellaneous", "Enable bound inventories", true).getBoolean(true);
@@ -64,9 +65,10 @@ public class Config {
 		allowCrucSouls = config.get("Miscellaneous", "Enable Crucible of Souls", true).getBoolean(true);
 		allowThinkTank = config.get("Miscellaneous", "Enable Think Tank", true).getBoolean(true);
 		allowFood = config.get("Miscellaneous", "Enable Talisman of Nourishment", true).getBoolean(true);
-		allowUrn = config.get("Miscellaneous", "Enable Everfull Urn", true).getBoolean(true);
-        allowbUrn = config.get("Miscellaneous", "Enable Everburn Urn", true).getBoolean(true);
+		allowUrnWater = config.get("Miscellaneous", "Enable Everfull Urn", true).getBoolean(true);
+        allowUrnLava = config.get("Miscellaneous", "Enable Everburn Urn", true).getBoolean(true);
 		allowBoots = config.get("Miscellaneous", "Enable Boots of the Meteor/Comet", true).getBoolean(true);
+		allowBootsIce = config.get("Miscellaneous", "Allow Boots of the Comet to create ice", true).getBoolean(true);
 		allowSojourner = config.get("Miscellaneous", "Enable Sojourner's Wand Caps", true).getBoolean(true);
 		allowMechanist = config.get("Miscellaneous", "Enable Mechanist's Wand Caps", true).getBoolean(true);
 		allowEnchants = config.get("Miscellaneous", "Enable TX Enchantments", true).getBoolean(true);
