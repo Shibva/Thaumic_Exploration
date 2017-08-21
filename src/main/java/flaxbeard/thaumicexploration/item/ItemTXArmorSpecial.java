@@ -3,6 +3,7 @@ package flaxbeard.thaumicexploration.item;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
@@ -33,6 +34,10 @@ public class ItemTXArmorSpecial extends ItemArmor implements IRepairable, IRunic
         public EnumRarity getRarity(ItemStack par1ItemStack) {
                 return EnumRarity.rare;
         }
+        
+        public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack) {
+            return par2ItemStack.isItemEqual(new ItemStack(Items.leather))?true:super.getIsRepairable(par1ItemStack, par2ItemStack);
+         }
 
 
         @Override
