@@ -13,7 +13,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class ItemBlankSeal extends Item {
 
 	public static final String[] itemNames = {"Pale", "Orange", "Magenta", "Light Blue", "Yellow", "Lime", "Pink", "Gray", "Light Gray", "Cyan", "Purple", "Blue", "Brown", "Green", "Red", "Dark"} ;
-	public ItemBlankSeal(int par1) {
+	public ItemBlankSeal() {
 		super();
 		this.setMaxDamage(0);
 		this.setHasSubtypes(true);

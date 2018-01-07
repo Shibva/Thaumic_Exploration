@@ -12,7 +12,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemBrain extends Item{
 
-	public ItemBrain(int par1) {
+	public ItemBrain() {
 		super();
 
 	}

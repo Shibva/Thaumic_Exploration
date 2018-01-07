@@ -3,21 +3,22 @@ package flaxbeard.thaumicexploration.item;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import thaumcraft.api.IRepairable;
+import thaumcraft.api.IRunicArmor;
 import thaumcraft.common.Thaumcraft;
 import thaumcraft.common.config.Config;
 import thaumcraft.common.items.armor.Hover;
 import flaxbeard.thaumicexploration.ThaumicExploration;
 
-public class ItemTXArmorSpecial extends ItemArmor implements IRepairable{
+public class ItemTXArmorSpecial extends ItemArmor implements IRepairable, IRunicArmor{
 
-        public ItemTXArmorSpecial(int par1, ItemArmor.ArmorMaterial par2EnumArmorMaterial,
-                        int par3, int par4) {
+        public ItemTXArmorSpecial(ItemArmor.ArmorMaterial par2EnumArmorMaterial, int par3, int par4) {
                 super(par2EnumArmorMaterial, par3, par4);
         }
         
@@ -33,6 +34,10 @@ public class ItemTXArmorSpecial extends ItemArmor implements IRepairable{
         public EnumRarity getRarity(ItemStack par1ItemStack) {
                 return EnumRarity.rare;
         }
+        
+        public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack) {
+            return par2ItemStack.isItemEqual(new ItemStack(Items.leather))?true:super.getIsRepairable(par1ItemStack, par2ItemStack);
+         }
 
 
         @Override
@@ -115,6 +120,10 @@ public class ItemTXArmorSpecial extends ItemArmor implements IRepairable{
             
           }
         }
+
+		public int getRunicCharge(ItemStack arg0) {
+			return 0;
+		}
         
 
 }

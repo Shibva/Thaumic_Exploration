@@ -49,29 +49,45 @@ public class BlockTrashJar extends BlockJar {
         par3List.add(new ItemStack(par1, 1, 0));
     }
 	
+	/*
 	@Override
     public Item getItemDropped(int par1, Random par2Random, int par3)
     {
         return Item.getItemFromBlock(ThaumicExploration.trashJar);
     }
-    
+    */
     @Override
     public int quantityDropped(Random par1Random)
     {
-        return 1;
+        return 0;
     }
     
     @Override
     public void breakBlock(World par1World, int par2, int par3, int par4, Block par5, int par6)
     {
-	
+    	super.breakBlock(par1World, par2, par3, par4, par5, par6);
 	}
     
+    /*
+    @Override
+    public void onBlockHarvested(World par1World, int par2, int par3, int par4, int par5, EntityPlayer par6EntityPlayer)
+    {
+      dropBlockAsItem(par1World, par2, par3, par4, par5, 0);
+      super.onBlockHarvested(par1World, par2, par3, par4, par5, par6EntityPlayer);
+    }
+    */
     @Override
     public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune)
     {
       ArrayList<ItemStack> drops = new ArrayList();
-
+      
+      TileEntity te = world.getTileEntity(x, y, z);
+      if ((te != null) && ((te instanceof TileEntityTrashJar)))
+      {
+        ItemStack drop = new ItemStack(ThaumicExploration.trashJar);
+        drops.add(drop);
+      }
+      
       return drops;
       
     }

@@ -9,9 +9,11 @@ import java.util.Map;
 import com.mojang.authlib.GameProfile;
 
 import cpw.mods.fml.common.Loader;
+import flaxbeard.thaumicexploration.ThaumicExploration;
 import flaxbeard.thaumicexploration.interop.AppleCoreInterop;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
@@ -27,10 +29,10 @@ public class ItemFoodTalisman extends Item {
 
 	public static List<String> foodBlacklist=new ArrayList<String>();
 	public static Map<String,Boolean> foodCache=new HashMap<String, Boolean>();
-	public ItemFoodTalisman(int par1) {
+	public ItemFoodTalisman() {
 		super();
 		this.maxStackSize = 1;
-		//this.setMaxDamage(100);
+		this.setMaxDamage(100);
 		foodBlacklist.add(ConfigItems.itemManaBean.getUnlocalizedName());
 		foodBlacklist.add(ConfigItems.itemZombieBrain.getUnlocalizedName());
 		foodBlacklist.add("item.foodstuff.0.name");
@@ -134,6 +136,9 @@ public class ItemFoodTalisman extends Item {
 				par1ItemStack.setItemDamage(par1ItemStack.getItemDamage());
 			}
 		}
+		//TODO WIP shit
+		par1ItemStack.setItemDamage( par1ItemStack.getMaxDamage()-((int) par1ItemStack.stackTagCompound.getFloat("food")) );
+		//par1ItemStack.stackTagCompound.getFloat("food")
 	}
 
 	private boolean isEdible(ItemStack food, EntityPlayer player) {
@@ -194,6 +199,12 @@ public class ItemFoodTalisman extends Item {
 		}
 		foodCache.put(foodName.toLowerCase(),false);
 		return false;
+	}
+	
+	@Override
+	public EnumRarity getRarity(ItemStack itemstack)
+	{
+		return EnumRarity.uncommon; //
 	}
 
 }

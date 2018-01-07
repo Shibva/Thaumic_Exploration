@@ -23,13 +23,14 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import flaxbeard.thaumicexploration.ThaumicExploration;
 import flaxbeard.thaumicexploration.tile.TileEntityBoundJar;
+import flaxbeard.thaumicexploration.tile.TileEntityTrashJar;
 
 
 public class BlockBoundJar extends BlockJar {
 
 	private Random random;
 
-	public BlockBoundJar(int i) {
+	public BlockBoundJar() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -45,12 +46,12 @@ public class BlockBoundJar extends BlockJar {
     {
         par3List.add(new ItemStack(par1, 1, 0));
     }
-	
+	/*
 	@Override
     public Item getItemDropped(int par1, Random par2Random, int par3)
     {
         return null;
-    }
+    }*/
     
     
     public int quantityDropped(Random par1Random)
@@ -69,6 +70,7 @@ public class BlockBoundJar extends BlockJar {
   		dropBlockAsItem(par1World, par2, par3, par4, drop);
 	}
     
+    @Override
     public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune)
     {
     /*  ArrayList<ItemStack> drops = new ArrayList();
@@ -89,8 +91,19 @@ public class BlockBoundJar extends BlockJar {
         return drops;
       */
         ArrayList<ItemStack> drops = new ArrayList();
-        drops.add(new ItemStack(ConfigBlocks.blockJar));
+        /*
+        drops.add(new ItemStack(ConfigBlocks.blockJar)); //TODO this is somehow causing 2 jars to drop
+        return drops;*/
+        
+        TileEntity te = world.getTileEntity(x, y, z);
+        if ((te != null) && ((te instanceof TileEntityBoundJar)))
+        {
+          ItemStack drop = new ItemStack(ConfigBlocks.blockJar);
+          drops.add(drop);
+        }
+        
         return drops;
+        
     }
     
     

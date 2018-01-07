@@ -24,6 +24,7 @@ import thaumcraft.common.config.ConfigItems;
 import thaumcraft.common.config.ConfigResearch;
 import cpw.mods.fml.common.registry.GameRegistry;
 import flaxbeard.thaumicexploration.ThaumicExploration;
+import flaxbeard.thaumicexploration.common.ConfigTX;
 import flaxbeard.thaumicexploration.item.ItemBaubleDiscountRing;
 
 
@@ -116,7 +117,7 @@ public final class ModRecipes {
 				new ItemStack(ConfigItems.itemShard,1,5), 
 				new ItemStack(ConfigItems.itemResource,1,14));
 		
-		if (ThaumicExploration.breadWand) {
+		if (ConfigTX.breadWand) {
 			registerResearchItemI("ROD_BREAD", new ItemStack(ThaumicExploration.breadCore), 3, 
 					new AspectList().add(Aspect.MAGIC, 8).add(Aspect.CROP, 8).add(Aspect.HUNGER, 4), 
 					new ItemStack(Items.bread), 
@@ -172,17 +173,21 @@ public final class ModRecipes {
 				new ItemStack(Blocks.netherrack), new ItemStack(Blocks.netherrack),
 				new ItemStack(Blocks.netherrack), new ItemStack(ConfigItems.itemFocusFire));
 		
-		registerResearchItemIE("ENCHBINDING","ENCHBINDING", Enchantment.enchantmentsList[ThaumicExploration.enchantmentBinding.effectId], 3, 
-				new AspectList().add(Aspect.TRAP, 8).add(Aspect.ENTROPY, 4).add(Aspect.TRAVEL, 4), 
-				new ItemStack(Items.iron_sword), new ItemStack(ConfigItems.itemResource, 1, 14), new ItemStack(Blocks.soul_sand));
-		
-		registerResearchItemIE("ENCHDISARM","ENCHDISARM", Enchantment.enchantmentsList[ThaumicExploration.enchantmentDisarm.effectId], 5, 
-				new AspectList().add(Aspect.WEAPON, 4).add(Aspect.SLIME, 8).add(Aspect.TRAP, 4), 
-				new ItemStack(Items.iron_sword), new ItemStack(ConfigItems.itemResource, 1, 14), new ItemStack(Items.slime_ball));
-		
-		registerResearchItemIE("ENCHNIGHTVISION","ENCHNIGHTVISION", Enchantment.enchantmentsList[ThaumicExploration.enchantmentNightVision.effectId], 5, 
-				new AspectList().add(Aspect.SENSES, 16).add(Aspect.DARKNESS, 8).add(Aspect.LIGHT, 16), 
-				new ItemStack(Items.golden_carrot), new ItemStack(ConfigItems.itemResource, 1, 14), new ItemStack(Items.golden_carrot));
+		if (ConfigTX.enchantmentBindingEnable) {	
+			registerResearchItemIE("ENCHBINDING","ENCHBINDING", Enchantment.enchantmentsList[ThaumicExploration.enchantmentBinding.effectId], 3, 
+					new AspectList().add(Aspect.TRAP, 8).add(Aspect.ENTROPY, 4).add(Aspect.TRAVEL, 4), 
+					new ItemStack(Items.iron_sword), new ItemStack(ConfigItems.itemResource, 1, 14), new ItemStack(Blocks.soul_sand));
+		}
+		if (ConfigTX.enchantmentDisarmEnable) {
+			registerResearchItemIE("ENCHDISARM","ENCHDISARM", Enchantment.enchantmentsList[ThaumicExploration.enchantmentDisarm.effectId], 5, 
+					new AspectList().add(Aspect.WEAPON, 4).add(Aspect.SLIME, 8).add(Aspect.TRAP, 4), 
+					new ItemStack(Items.iron_sword), new ItemStack(ConfigItems.itemResource, 1, 14), new ItemStack(Items.slime_ball));
+		}
+		if (ConfigTX.enchantmentNVEnable) {
+			registerResearchItemIE("ENCHNIGHTVISION","ENCHNIGHTVISION", Enchantment.enchantmentsList[ThaumicExploration.enchantmentNightVision.effectId], 5, 
+					new AspectList().add(Aspect.SENSES, 16).add(Aspect.DARKNESS, 8).add(Aspect.LIGHT, 16), 
+					new ItemStack(Items.golden_carrot), new ItemStack(ConfigItems.itemResource, 1, 14), new ItemStack(Items.golden_carrot));
+		}
 		
 		registerResearchItemI("TALISMANFOOD", new ItemStack(ThaumicExploration.talismanFood), 5, 
 				new AspectList().add(Aspect.HUNGER, 30).add(Aspect.FLESH, 25).add(Aspect.CROP, 25).add(Aspect.EXCHANGE,10), 
@@ -216,18 +221,24 @@ public final class ModRecipes {
 				new ItemStack(ThaumicExploration.pureZombieBrain), new ItemStack(ConfigItems.itemThaumonomicon), 
 				new ItemStack(ThaumicExploration.pureZombieBrain), new ItemStack(ConfigItems.itemThaumometer));
 		
-		registerResearchItemI("URN", new ItemStack(ThaumicExploration.everfullUrn), 2, 
-				new AspectList().add(Aspect.WATER, 20).add(Aspect.VOID, 8).add(Aspect.MAGIC, 4), 
-				new ItemStack(Items.flower_pot),new ItemStack(Items.water_bucket), 
-				new ItemStack(Items.brick),new ItemStack(Items.water_bucket), 
-				new ItemStack(Items.brick),new ItemStack(Items.water_bucket), 
-				new ItemStack(Items.brick) );
-		registerResearchItemI("BURN", new ItemStack(ThaumicExploration.everburnUrn), 2,
-				new AspectList().add(Aspect.FIRE, 20).add(Aspect.VOID, 8).add(Aspect.MAGIC, 4),
-				new ItemStack(Items.flower_pot),new ItemStack(Items.lava_bucket),
-				new ItemStack(Items.brick),new ItemStack(Items.lava_bucket),
-				new ItemStack(Items.brick),new ItemStack(Items.lava_bucket),
-				new ItemStack(Items.brick) );
+		if (ConfigTX.allowUrnWater) {
+			registerResearchItemI("URN", new ItemStack(ThaumicExploration.everfullUrn), 2, 
+					new AspectList().add(Aspect.WATER, 20).add(Aspect.VOID, 8).add(Aspect.MAGIC, 4), 
+					new ItemStack(Items.flower_pot),new ItemStack(Items.water_bucket), 
+					new ItemStack(Items.brick),new ItemStack(Items.water_bucket), 
+					new ItemStack(Items.brick),new ItemStack(Items.water_bucket), 
+					new ItemStack(Items.brick) );
+			
+			if (ConfigTX.allowUrnLava) {	
+				registerResearchItemI("BURN", new ItemStack(ThaumicExploration.everburnUrn), 2,
+						new AspectList().add(Aspect.FIRE, 20).add(Aspect.VOID, 8).add(Aspect.MAGIC, 4),
+						new ItemStack(Items.flower_pot),new ItemStack(Items.lava_bucket),
+						new ItemStack(Items.brick),new ItemStack(Items.lava_bucket),
+						new ItemStack(Items.brick),new ItemStack(Items.lava_bucket),
+						new ItemStack(Items.brick) );
+			}
+		}
+		
 		registerResearchItemI("NECROINFUSION", new ItemStack(ThaumicExploration.itemAltar), 7, 
 				new AspectList().add(Aspect.MAGIC, 32).add(Aspect.DEATH, 16).add(Aspect.UNDEAD, 16).add(Aspect.CRAFT, 16), 
 				new ItemStack(ConfigBlocks.blockStoneDevice,1,1),new ItemStack(Blocks.netherrack), 
@@ -283,6 +294,7 @@ public final class ModRecipes {
                 new ItemStack(ConfigBlocks.blockCandle,1,32767),
                 new ItemStack(ConfigBlocks.blockCandle,1,32767),
                 new ItemStack(ConfigItems.itemShard,1,0));
+        
         for (int i = 0; i<6; i++) {
 	        registerResearchItem("DISCOUNTRINGS"+i, "DISCOUNTRINGS", new ItemStack(ThaumicExploration.discountRing,1,i), new AspectList().add(Aspect.getPrimalAspects().get(i), 15),
 	                " F ", "F F", " F ",

@@ -1,25 +1,25 @@
 package flaxbeard.thaumicexploration.packet;
 
-import ibxm.Player;
+import flaxbeard.thaumicexploration.ThaumicExploration;
+import flaxbeard.thaumicexploration.data.TXWorldData;
+import flaxbeard.thaumicexploration.event.DamageSourceTX;
+import flaxbeard.thaumicexploration.misc.SortingInventory;
+import flaxbeard.thaumicexploration.tile.TileEntityAutoSorter;
+import flaxbeard.thaumicexploration.tile.TileEntityBoundChest;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufInputStream;
 import io.netty.buffer.ByteBufOutputStream;
 import io.netty.buffer.Unpooled;
 
 import java.io.IOException;
-import java.util.List;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Items;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetHandlerPlayServer;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.world.World;
 import net.minecraftforge.common.DimensionManager;
@@ -29,18 +29,9 @@ import net.minecraftforge.fluids.IFluidContainerItem;
 
 import org.apache.commons.lang3.tuple.MutablePair;
 
-
-import thaumcraft.common.config.ConfigBlocks;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.network.FMLNetworkEvent.ServerCustomPacketEvent;
 import cpw.mods.fml.common.network.internal.FMLProxyPacket;
-import flaxbeard.thaumicexploration.ThaumicExploration;
-import flaxbeard.thaumicexploration.data.TXWorldData;
-import flaxbeard.thaumicexploration.event.DamageSourceTX;
-import flaxbeard.thaumicexploration.misc.SortingInventory;
-import flaxbeard.thaumicexploration.tile.TileEntityAutoSorter;
-import flaxbeard.thaumicexploration.tile.TileEntityBoundChest;
-import flaxbeard.thaumicexploration.tile.TileEntityBoundJar;
 
 public class TXServerPacketHandler {
 

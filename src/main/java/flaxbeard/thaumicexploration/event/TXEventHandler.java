@@ -3,6 +3,7 @@ package flaxbeard.thaumicexploration.event;
 import baubles.api.BaublesApi;
 import codechicken.lib.packet.PacketCustom;
 import cpw.mods.fml.common.gameevent.PlayerEvent;
+import flaxbeard.thaumicexploration.common.ConfigTX;
 import flaxbeard.thaumicexploration.data.BoundJarNetworkManager;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufOutputStream;
@@ -585,7 +586,7 @@ public class TXEventHandler {
 	@SubscribeEvent
 	public void handleEnchantmentAttack(LivingAttackEvent event) {
 
-		if ((event.entityLiving instanceof EntityEnderman || event.entityLiving instanceof EntityCreeper || event.entityLiving instanceof EntityPlayer)&& event.source.getSourceOfDamage() instanceof EntityLivingBase) {
+		if ((event.entityLiving instanceof EntityEnderman || event.entityLiving instanceof EntityCreeper || event.entityLiving instanceof EntityPlayer)&& event.source.getSourceOfDamage() instanceof EntityLivingBase && ConfigTX.enchantmentBindingEnable) {
 			EntityLivingBase attacker = (EntityLivingBase) event.source.getSourceOfDamage();
 			ItemStack heldItem = attacker.getHeldItem();
 			if(heldItem == null)
@@ -596,7 +597,7 @@ public class TXEventHandler {
 				event.entityLiving.addPotionEffect(new PotionEffect(ThaumicExploration.potionBinding.id, 50, 1));
 			}
 		}
-		if (event.source.getSourceOfDamage() instanceof EntityLivingBase) {
+		if (event.source.getSourceOfDamage() instanceof EntityLivingBase && ConfigTX.enchantmentBindingEnable) {
 			EntityLivingBase attacker = (EntityLivingBase) event.source.getSourceOfDamage();
 			ItemStack heldItem = attacker.getHeldItem();
 			if(heldItem == null)
@@ -607,7 +608,7 @@ public class TXEventHandler {
 				event.entityLiving.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 50, 1));
 			}
 		}
-		if (event.source.getSourceOfDamage() instanceof EntityLivingBase) {
+		if (event.source.getSourceOfDamage() instanceof EntityLivingBase && ConfigTX.enchantmentDisarmEnable) {
 			EntityLivingBase attacker = (EntityLivingBase) event.source.getSourceOfDamage();
 			ItemStack heldItem = attacker.getHeldItem();
 			if(heldItem == null)
@@ -736,8 +737,9 @@ public class TXEventHandler {
 	public void handleItemUse(PlayerInteractEvent event) {
 		byte type = 0;
 		
-		if (event.entityPlayer.worldObj.blockExists(event.x, event.y, event.z)) {
-			if (event.entityPlayer.getCurrentEquippedItem() != null) {
+		if (event.entityPlayer.worldObj.blockExists(event.x, event.y, event.z)) { 
+			/*
+			if (event.entityPlayer.getCurrentEquippedItem() != null) {		
 				if (event.entityPlayer.getCurrentEquippedItem().getItem() == ConfigItems.itemGolemBell) {
 					ItemStack stack  =event.entityPlayer.getCurrentEquippedItem();
 					if (event.entityPlayer.worldObj.getBlock(event.x, event.y, event.z) == ThaumicExploration.autoSorter) {
@@ -790,7 +792,8 @@ public class TXEventHandler {
 					}
 						
 				}
-			}
+			}*/
+			
 			//System.out.println(event.entityPlayer.worldObj.getBlock(event.x, event.y, event.z) + " " + ThaumicExploration.boundChest);
 			if (event.entityPlayer.worldObj.getBlock(event.x, event.y, event.z) == Blocks.chest) {
 
