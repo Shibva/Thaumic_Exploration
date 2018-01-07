@@ -64,7 +64,7 @@ public class TileEntityEverburnUrn extends TileVisNode implements IFluidTank, IF
     @Override
     public int getCapacity() {
         // TODO Auto-generated method stub
-        return 10*CONVERSION_FACTOR;
+        return 4*CONVERSION_FACTOR;
     }
 
     @Override
