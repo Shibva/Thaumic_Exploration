@@ -135,10 +135,10 @@ public class ItemFoodTalisman extends Item {
 				par1ItemStack.stackTagCompound.setFloat("saturation", finalSat);
 				par1ItemStack.setItemDamage(par1ItemStack.getItemDamage());
 			}
-		}
 		//TODO WIP shit
 		par1ItemStack.setItemDamage( par1ItemStack.getMaxDamage()-((int) par1ItemStack.stackTagCompound.getFloat("food")) );
 		//par1ItemStack.stackTagCompound.getFloat("food")
+		}
 	}
 
 	private boolean isEdible(ItemStack food, EntityPlayer player) {
