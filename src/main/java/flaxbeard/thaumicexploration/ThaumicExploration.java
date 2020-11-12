@@ -21,6 +21,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraftforge.common.ForgeChunkManager;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.oredict.OreDictionary;
 
@@ -67,6 +68,7 @@ import flaxbeard.thaumicexploration.block.BlockReplicator;
 import flaxbeard.thaumicexploration.block.BlockSoulBrazier;
 import flaxbeard.thaumicexploration.block.BlockThinkTank;
 import flaxbeard.thaumicexploration.block.BlockTrashJar;
+import flaxbeard.thaumicexploration.chunkLoader.ChunkLoaderCallback;
 import flaxbeard.thaumicexploration.commands.CommandAlterRate;
 import flaxbeard.thaumicexploration.commands.CommandCheckWarp;
 import flaxbeard.thaumicexploration.common.CommonProxy;
@@ -360,7 +362,8 @@ public class ThaumicExploration {
 		GameRegistry.registerItem(stabilizerBelt, "stabilizerBelt");
 		
 		discountRing = new ItemBaubleDiscountRing().setCreativeTab(tab).setUnlocalizedName("thaumicexploration:discountRing").setTextureName("thaumicExploration:discountRing");
-		GameRegistry.registerItem(discountRing, "discountRing");        
+		GameRegistry.registerItem(discountRing, "discountRing");
+        ForgeChunkManager.setForcedChunkLoadingCallback(instance,new ChunkLoaderCallback());
 	}
 
 

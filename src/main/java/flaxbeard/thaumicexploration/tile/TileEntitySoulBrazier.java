@@ -2,6 +2,7 @@ package flaxbeard.thaumicexploration.tile;
 
 import com.mojang.authlib.GameProfile;
 import flaxbeard.thaumicexploration.ThaumicExploration;
+import flaxbeard.thaumicexploration.chunkLoader.ITXChunkLoader;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
@@ -10,6 +11,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.world.ChunkCoordIntPair;
 import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraftforge.common.ForgeChunkManager;
 import net.minecraftforge.common.util.ForgeDirection;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.ThaumcraftApiHelper;
@@ -31,7 +33,7 @@ import thaumcraft.common.tiles.TileVisRelay;
 /**
  * Created by nekosune on 03/08/14.
  */
-public class TileEntitySoulBrazier extends TileVisRelay  implements IEssentiaTransport {
+public class TileEntitySoulBrazier extends TileVisRelay  implements IEssentiaTransport,ITXChunkLoader {
 
 
     public int storedWarp;
@@ -45,6 +47,7 @@ public class TileEntitySoulBrazier extends TileVisRelay  implements IEssentiaTra
     private static int VisCapacity=16;
     public static int EssentiaRate=1;
     public static int VisRate=3;
+    public ForgeChunkManager.Ticket heldChunk;
     public static boolean renderWisp=false;
     @Override
     public void readCustomNBT(NBTTagCompound nbttagcompound) {
@@ -113,6 +116,8 @@ public class TileEntitySoulBrazier extends TileVisRelay  implements IEssentiaTra
 
         getPower();
         if(active) {
+            if(heldChunk==null)
+                addTicket();
             if (this.count % 60 == 0)
                 spendPower();
             if (!checkPower()) {
@@ -122,7 +127,9 @@ public class TileEntitySoulBrazier extends TileVisRelay  implements IEssentiaTra
                     int temp = Thaumcraft.proxy.getPlayerKnowledge().getWarpPerm(owner.getName()) + storedWarp;
                     Thaumcraft.proxy.getPlayerKnowledge().setWarpPerm(owner.getName(), temp);
                 }
-                storedWarp=0;                
+                storedWarp=0;
+                ForgeChunkManager.unforceChunk(this.heldChunk, new ChunkCoordIntPair(this.xCoord >> 4, this.zCoord >> 4));
+                this.heldChunk=null;
                 worldObj.markBlockForUpdate(xCoord,yCoord,zCoord);
             }
 
@@ -270,6 +277,32 @@ void fillJar() {
     @Override
     public boolean renderExtendedTube() {
         return false;
+    }
+
+    @Override
+    public void forceChunkLoading(ForgeChunkManager.Ticket ticket) {
+
+            this.heldChunk = ticket;
+            ForgeChunkManager.forceChunk(this.heldChunk, new ChunkCoordIntPair(this.xCoord >> 4, this.zCoord >> 4));
+    }
+
+    @Override
+    public void addTicket() {
+        ForgeChunkManager.Ticket newTicket = ForgeChunkManager.requestTicket(ThaumicExploration.instance, this.worldObj, ForgeChunkManager.Type.NORMAL);
+        newTicket.getModData().setInteger("xCoord", this.xCoord);
+        newTicket.getModData().setInteger("yCoord", this.yCoord);
+        newTicket.getModData().setInteger("zCoord", this.zCoord);
+        newTicket.getModData().setBoolean("warpChunk", true);
+        this.heldChunk = newTicket;
+        ForgeChunkManager.forceChunk(this.heldChunk, new ChunkCoordIntPair(this.xCoord >> 4, this.zCoord >> 4));
+    }
+
+    @Override
+    public void removeTicket(ForgeChunkManager.Ticket ticket) {
+        if(heldChunk!=null) {
+            ForgeChunkManager.releaseTicket(this.heldChunk);
+            this.heldChunk = null;
+        }
     }
 
 }
