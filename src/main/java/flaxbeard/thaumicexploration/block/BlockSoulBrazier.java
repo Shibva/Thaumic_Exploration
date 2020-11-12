@@ -15,7 +15,6 @@ import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.world.ChunkCoordIntPair;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.common.ForgeChunkManager;
 import thaumcraft.common.Thaumcraft;
 
 /**
@@ -36,8 +35,7 @@ public class BlockSoulBrazier extends BlockContainer {
     @Override
     public void breakBlock(World p_149749_1_, int p_149749_2_, int p_149749_3_, int p_149749_4_, Block p_149749_5_, int p_149749_6_) {
         TileEntitySoulBrazier entity=((TileEntitySoulBrazier) p_149749_1_.getTileEntity(p_149749_2_, p_149749_3_, p_149749_4_));
-        Thaumcraft.proxy.getPlayerKnowledge().addWarpPerm(entity.owner.getName(), entity.storedWarp);
-        ForgeChunkManager.unforceChunk(entity.heldChunk, new ChunkCoordIntPair(entity.xCoord >> 4, entity.zCoord >> 4));
+        Thaumcraft.proxy.getPlayerKnowledge().addWarpPerm(entity.owner.getName(), entity.storedWarp);        
         super.breakBlock(p_149749_1_, p_149749_2_, p_149749_3_, p_149749_4_, p_149749_5_, p_149749_6_);
 
     }
