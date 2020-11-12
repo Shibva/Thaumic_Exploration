@@ -31,6 +31,7 @@ public class ConfigTX {
 	public static boolean allowMechanist;
 	public static boolean allowEnchants;
 	public static boolean allowTainturgy;
+	public static boolean allowSBChunkLoading;
 	public static boolean allowMagicPlankReplication;
 	public static boolean allowModWoodReplication;
 	public static boolean allowModStoneReplication;
@@ -73,6 +74,7 @@ public class ConfigTX {
 		allowMechanist = config.get("Miscellaneous", "Enable Mechanist's Wand Caps", true).getBoolean(true);
 		allowEnchants = config.get("Miscellaneous", "Enable TX Enchantments", true).getBoolean(true);
 		allowTainturgy = config.get("Miscellaneous", "Enable Wispy Dreamcatcher", true).getBoolean(true);
+		allowSBChunkLoading =  config.get("Miscellaneous", "Enable Soul Brazier Chunkloading", true).getBoolean(true);
 		allowMagicPlankReplication = config.get("Replicator", "Allow replication of Greatwood/Silverwood planks", true).getBoolean(true);
 		allowModWoodReplication = config.get("Replicator", "Allow replication of other mods' logs and planks", true).getBoolean(true);
 		allowModStoneReplication = config.get("Replicator", "Allow replication of other mods' stone blocks", true).getBoolean(true);
