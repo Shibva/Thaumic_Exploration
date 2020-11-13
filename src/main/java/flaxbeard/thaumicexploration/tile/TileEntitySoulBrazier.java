@@ -1,6 +1,7 @@
 package flaxbeard.thaumicexploration.tile;
 
 import com.mojang.authlib.GameProfile;
+import flaxbeard.thaumicexploration.common.ConfigTX;
 import flaxbeard.thaumicexploration.ThaumicExploration;
 import flaxbeard.thaumicexploration.chunkLoader.ITXChunkLoader;
 import net.minecraft.entity.player.EntityPlayer;
@@ -116,7 +117,7 @@ public class TileEntitySoulBrazier extends TileVisRelay  implements IEssentiaTra
 
         getPower();
         if(active) {
-            if(heldChunk==null)
+            if(heldChunk==null && ConfigTX.allowSBChunkLoading==true)
                 addTicket();
             if (this.count % 60 == 0)
                 spendPower();
