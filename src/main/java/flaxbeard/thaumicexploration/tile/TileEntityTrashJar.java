@@ -63,13 +63,10 @@ public class TileEntityTrashJar extends TileJarFillable {
     	if (this.amount > 0) {
     		ticks++;
     		if (ticks > 5) {
-    			this.amount--;
+    			this.amount = 0;
+    			this.aspect = null;
     			ticks = 0;
     		}
-    	}
-    	if (this.amount == 0) {
-    		this.aspect = null;
-    		ticks = 0;
     	}
     	super.updateEntity();
     }
