@@ -53,7 +53,7 @@ public class BlockReplicator extends BlockContainer {
         return false;
     }
 	
-    public void onNeighborBlockChange(World world, int x, int y, int z, int par5)
+    public void onNeighborBlockChange(World world, int x, int y, int z, Block par5)
     {
         boolean flag = world.isBlockIndirectlyGettingPowered(x, y, z);
 
