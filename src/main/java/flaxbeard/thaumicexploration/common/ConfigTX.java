@@ -35,6 +35,13 @@ public class ConfigTX {
 	public static boolean allowMagicPlankReplication;
 	public static boolean allowModWoodReplication;
 	public static boolean allowModStoneReplication;
+	public static boolean allowEverfullUrnFillNearby;
+	public static boolean allowThaumcraftCrucibleRefill;
+	public static boolean allowThaumcraftSpaRefill;
+	public static boolean allowVanillaCauldronRefill;
+	public static boolean allowBotaniaApothecaryPetalRefill;
+	public static boolean allowWitcheryCauldronRefill;
+	public static boolean allowWitcheryKettleRefill;
 	//public static boolean voidJarLightning;
 	
 	static Configuration config;
@@ -66,8 +73,8 @@ public class ConfigTX {
 		allowCrucSouls = config.get("Miscellaneous", "Enable Crucible of Souls", true).getBoolean(true);
 		allowThinkTank = config.get("Miscellaneous", "Enable Think Tank", true).getBoolean(true);
 		allowFood = config.get("Miscellaneous", "Enable Talisman of Nourishment", true).getBoolean(true);
+		allowUrnLava = config.get("Miscellaneous", "Enable Everburn Urn", true).getBoolean(true);
 		allowUrnWater = config.get("Miscellaneous", "Enable Everfull Urn", true).getBoolean(true);
-        allowUrnLava = config.get("Miscellaneous", "Enable Everburn Urn", true).getBoolean(true);
 		allowBoots = config.get("Miscellaneous", "Enable Boots of the Meteor/Comet", true).getBoolean(true);
 		allowBootsIce = config.get("Miscellaneous", "Allow Boots of the Comet to create ice", true).getBoolean(true);
 		allowSojourner = config.get("Miscellaneous", "Enable Sojourner's Wand Caps", true).getBoolean(true);
@@ -78,7 +85,15 @@ public class ConfigTX {
 		allowMagicPlankReplication = config.get("Replicator", "Allow replication of Greatwood/Silverwood planks", true).getBoolean(true);
 		allowModWoodReplication = config.get("Replicator", "Allow replication of other mods' logs and planks", true).getBoolean(true);
 		allowModStoneReplication = config.get("Replicator", "Allow replication of other mods' stone blocks", true).getBoolean(true);
-		
+
+		allowEverfullUrnFillNearby = config.get("EverfullUrn", "Allow the Everfull Urn to automatically fill up supported nearby containers. Overrides all other container settings", true).getBoolean(true);
+		allowThaumcraftCrucibleRefill = config.get("EverfullUrn", "Allow the Everfull Urn to fill up Thaumcraft Crucibles", true).getBoolean(true);
+		allowThaumcraftSpaRefill = config.get("EverfullUrn", "Allow the Everfull Urn to fill up Thaumcraft Spas", true).getBoolean(true);
+		allowVanillaCauldronRefill = config.get("EverfullUrn", "Allow the Everfull Urn to fill up vanilla Cauldrons", true).getBoolean(true);
+		allowBotaniaApothecaryPetalRefill = config.get("EverfullUrn", "Allow the Everfull Urn to fill up Botania Petal Apothecaries", true).getBoolean(true);
+		allowWitcheryCauldronRefill = config.get("EverfullUrn", "Allow the Everfull Urn to fill up Witchery Cauldrons", true).getBoolean(true);
+		allowWitcheryKettleRefill = config.get("EverfullUrn", "Allow the Everfull Urn to fill up Witchery Kettles", true).getBoolean(true);
+
 		//voidJarLightning = config.get("Miscellaneous", "Enable effects on oblivion jar", false).getBoolean(false);
 		
 		config.save();

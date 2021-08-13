@@ -116,7 +116,7 @@ import flaxbeard.thaumicexploration.wand.WandRodTransmutationOnUpdate;
 import flaxbeard.thaumicexploration.wand.WandRodTransmutative;
 
 
-@Mod(modid = "ThaumicExploration", name = "Thaumic Exploration", version = "${version}", dependencies="required-after:Thaumcraft;after:ThaumicTinkerer")
+@Mod(modid = ThaumicExploration.MODID, name = "Thaumic Exploration", version = "${version}", dependencies="required-after:Thaumcraft;after:ThaumicTinkerer")
 
 public class ThaumicExploration {
 	
@@ -124,6 +124,7 @@ public class ThaumicExploration {
     public static ThaumicExploration instance;
     
     public static FMLEventChannel channel;
+    public static final String MODID = "ThaumicExploration";
 
     public static ArrayList<MutablePair<Item, Integer>> allowedItems = new ArrayList<MutablePair<Item, Integer>>();
 	public static Item pureZombieBrain;

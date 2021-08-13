@@ -3,11 +3,14 @@ buildscript {
         mavenCentral()
         maven {
             name = "forge"
-            url = "http://files.minecraftforge.net/maven"
+            url = "https://gregtech.overminddl1.com/"
         }
         maven {
             name = "sonatype"
             url = "https://oss.sonatype.org/content/repositories/snapshots/"
+        }
+        maven {
+            url "http://www.ryanliptak.com/maven/"
         }
     }
     dependencies {
@@ -46,7 +49,7 @@ dependencies {
     // for more info...
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
-
+    compile "applecore:AppleCore:1.7.10-3.1.1:deobf"
 }
 
 
