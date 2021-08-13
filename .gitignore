@@ -30,6 +30,13 @@ Thumbs.db
 ## Jars
 *.jar
 !/gradle/wrapper/gradle-wrapper.jar
+!/libs/appliedenergistics2-rv3-beta-54-GTNH-dev.jar
+!/libs/Baubles-deobf-1.7.10-1.0.1.10.jar
+!/libs/Botania r1.8-248-deobf.jar
+!/libs/CodeChickenLib-1.7.10-1.1.1.99-dev.jar
+!/libs/Thaumcraft-1.7.10-4.2.3.5-deobf.jar
+!/libs/ThaumicTinkerer-1.7.10-2.5-2-dev.jar
+!/libs/Waila-1.5.11-RC2-NONEI_1.7.10-dev.jar
 
 ### OSX (adds a lot of garbage)###
 .DS_Store
@@ -69,6 +76,6 @@ README.txt
 
 /src/main/resources/assets/thaumcraft
 
-##API
+# API
 /src/api
 /models
