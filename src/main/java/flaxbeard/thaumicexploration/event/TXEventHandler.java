@@ -537,7 +537,7 @@ public class TXEventHandler {
 	
 	@SubscribeEvent
 	public void stopCreeperExplosions(LivingUpdateEvent event) {
-		if (!isEnderIO && event.entityLiving.getEquipmentInSlot(4) != null) {
+		if (!isEnderIO && ConfigTX.enchantmentNVEnable && event.entityLiving.getEquipmentInSlot(4) != null) {
 			ItemStack heldItem = event.entityLiving.getEquipmentInSlot(4);
 			int nightVision = EnchantmentHelper.getEnchantmentLevel(ThaumicExploration.enchantmentNightVision.effectId, heldItem);
 			if(nightVision > 0 && (!event.entityLiving.isPotionActive(Potion.nightVision.id) || event.entityLiving.getActivePotionEffect(Potion.nightVision).getDuration() < 210)) {
