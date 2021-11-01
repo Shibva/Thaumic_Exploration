@@ -282,7 +282,7 @@ public final class ModRecipes {
 
 
 	private static void initArcaneRecipes() {
-		for (int i = 0; i<15; i++) {
+		for (int i = 0; i<=15; i++) {
 	        registerResearchItemShapeless("FLOATCANDLE"+i, "FLOATCANDLE", new ItemStack(ThaumicExploration.floatCandle,3,i), new AspectList().add(Aspect.AIR, 5),
 	                new ItemStack(ConfigBlocks.blockCandle,1,i),
 	                new ItemStack(ConfigBlocks.blockCandle,1,i),
