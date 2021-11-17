@@ -58,17 +58,18 @@ public class SoulBrazierUtils {
 	 * Player Data Handling - Warp Queue
 	 */
 
-	public static boolean doesPlayerHaveWarpQueued(UUID aPlayer) {
+	public static int doesPlayerHaveWarpQueued(UUID aPlayer) {
 		if (aPlayer == null) {
-			return false;
+			return 0;
 		}
 		ArrayList<String> aWarpData = readPlayerWarpQueueDataFromFile();
+		int aQueueCount = 0;
 		for (String warpData : aWarpData) {
 			if (warpData != null && warpData.length() > 0 && warpData.contains(aPlayer.toString())) {
-				return true;
+				aQueueCount++;
 			}
 		}
-		return false;
+		return aQueueCount;
 
 	}
 
@@ -77,7 +78,7 @@ public class SoulBrazierUtils {
 			return;
 		}
 		String aUUID = aPlayer.toString();
-		String warpKey = aUUID+"@"+aTile.storedWarp+"@"+aTile.xCoord+"@"+aTile.yCoord+"@"+aTile.zCoord;
+		String warpKey = aUUID+"@"+aTile.storedWarp+"@"+aTile.xCoord+"@"+aTile.yCoord+"@"+aTile.zCoord+""+aTile.getWorldObj().provider.dimensionId;
 		ArrayList<String> aNewDataList = new ArrayList<String>();
 		ArrayList<String> aWarpData = readPlayerWarpQueueDataFromFile();
 		if (aWarpData.contains(warpKey)) {
@@ -109,19 +110,20 @@ public class SoulBrazierUtils {
 		for (String warpData : aWarpData) {
 			if (warpData != null && warpData.length() > 0 && warpData.contains(aPlayer.toString())) {
 				String[] playerData = warpData.split("@");
-				if (playerData.length == 5) {
+				if (playerData.length == 6) {
 					int aQueuedWarp = Integer.parseInt(playerData[1]);
 					int aX = Integer.parseInt(playerData[2]);
 					int aY = Integer.parseInt(playerData[3]);
 					int aZ = Integer.parseInt(playerData[4]);
-					return new SoulBrazierQueueData(aPlayer, aQueuedWarp, aX, aY, aZ);
+					int aDimID = Integer.parseInt(playerData[5]);
+					return new SoulBrazierQueueData(aPlayer, aQueuedWarp, aX, aY, aZ, aDimID);
 				}
 			}
 		}
 		return null;
 	}
 
-	public static boolean removePlayerDataFromWarpQueue(UUID aPlayer, int aX, int aY, int aZ) {
+	public static boolean removePlayerDataFromWarpQueue(UUID aPlayer, int aX, int aY, int aZ, int aDimID) {
 		if (aPlayer == null) {
 			return false;
 		}
@@ -133,7 +135,7 @@ public class SoulBrazierUtils {
 					aNewDataList.add(warpData);
 				}		
 				else {
-					if (!warpData.contains(aX+"@"+aY+"@"+aZ)) {
+					if (!warpData.contains(aX+"@"+aY+"@"+aZ+"@"+aDimID)) {
 						aNewDataList.add(warpData);
 					}
 				}
