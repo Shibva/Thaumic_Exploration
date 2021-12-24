@@ -6,35 +6,8 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityList;
-import net.minecraft.entity.EntityList.EntityEggInfo;
-import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.EnumCreatureType;
-import net.minecraft.init.Blocks;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.potion.Potion;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.biome.BiomeGenBase;
-import net.minecraftforge.common.ForgeChunkManager;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.oredict.OreDictionary;
-
 import org.apache.commons.lang3.tuple.MutablePair;
 
-import thaumcraft.api.ThaumcraftApi;
-import thaumcraft.api.aspects.AspectList;
-import thaumcraft.api.wands.StaffRod;
-import thaumcraft.api.wands.WandCap;
-import thaumcraft.api.wands.WandRod;
-import thaumcraft.common.blocks.BlockCandleItem;
-import thaumcraft.common.config.ConfigBlocks;
-import thaumcraft.common.lib.crafting.ThaumcraftCraftingManager;
 import baubles.api.BaubleType;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.FMLCommonHandler;
@@ -55,8 +28,6 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import flaxbeard.thaumicexploration.block.BlockAutoCrafter;
-import flaxbeard.thaumicexploration.block.BlockAutoSorter;
 import flaxbeard.thaumicexploration.block.BlockBootsIce;
 import flaxbeard.thaumicexploration.block.BlockBoundChest;
 import flaxbeard.thaumicexploration.block.BlockBoundJar;
@@ -95,6 +66,7 @@ import flaxbeard.thaumicexploration.item.ItemTXArmorSpecial;
 import flaxbeard.thaumicexploration.item.ItemTaintSeedFood;
 import flaxbeard.thaumicexploration.misc.TXPotion;
 import flaxbeard.thaumicexploration.misc.TXTaintPotion;
+import flaxbeard.thaumicexploration.misc.brazier.SoulBrazierQueue;
 import flaxbeard.thaumicexploration.research.ModRecipes;
 import flaxbeard.thaumicexploration.research.ModResearch;
 import flaxbeard.thaumicexploration.tile.TileEntityAutoSorter;
@@ -114,6 +86,31 @@ import flaxbeard.thaumicexploration.wand.WandRodBreadOnUpdate;
 import flaxbeard.thaumicexploration.wand.WandRodNecromancerOnUpdate;
 import flaxbeard.thaumicexploration.wand.WandRodTransmutationOnUpdate;
 import flaxbeard.thaumicexploration.wand.WandRodTransmutative;
+import net.minecraft.block.Block;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityList;
+import net.minecraft.entity.EntityList.EntityEggInfo;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EnumCreatureType;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.potion.Potion;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraftforge.common.ForgeChunkManager;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.oredict.OreDictionary;
+import thaumcraft.api.ThaumcraftApi;
+import thaumcraft.api.aspects.AspectList;
+import thaumcraft.api.wands.StaffRod;
+import thaumcraft.api.wands.WandCap;
+import thaumcraft.api.wands.WandRod;
+import thaumcraft.common.blocks.BlockCandleItem;
+import thaumcraft.common.config.ConfigBlocks;
+import thaumcraft.common.lib.crafting.ThaumcraftCraftingManager;
 
 
 @Mod(modid = ThaumicExploration.MODID, name = "Thaumic Exploration", version = "${version}", dependencies="required-after:Thaumcraft;after:ThaumicTinkerer")
@@ -244,7 +241,11 @@ public class ThaumicExploration {
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		
-	    //GameRegistry.registerWorldGenerator(this.worldGen = new WorldGenTX());
+	    //GameRegistry.registerWorldGenerator(this.worldGen = new WorldGenTX());		
+
+		SoulBrazierQueue aBrazierQueue = new SoulBrazierQueue();
+		MinecraftForge.EVENT_BUS.register(aBrazierQueue);
+		FMLCommonHandler.instance().bus().register(aBrazierQueue);
 	   
 		Potion[] potionTypes = null;
 
