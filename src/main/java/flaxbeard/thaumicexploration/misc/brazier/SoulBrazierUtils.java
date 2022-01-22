@@ -13,10 +13,10 @@ import java.util.UUID;
 
 import flaxbeard.thaumicexploration.ThaumicExploration;
 import flaxbeard.thaumicexploration.tile.TileEntitySoulBrazier;
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.server.MinecraftServer;
+import net.minecraftforge.common.DimensionManager;
 
 public class SoulBrazierUtils {
 
@@ -190,7 +190,7 @@ public class SoulBrazierUtils {
 	}
 
 	private static File getSaveDirectory() {
-		return new File(Minecraft.getMinecraft().mcDataDir, "saves/"+ThaumicExploration.MODID+"/");
+		return new File(DimensionManager.getCurrentSaveRootDirectory(), ThaumicExploration.MODID);
 	}
 
 	private static File getPlayerWarpDataFile() {
