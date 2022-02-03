@@ -113,7 +113,7 @@ import thaumcraft.common.config.ConfigBlocks;
 import thaumcraft.common.lib.crafting.ThaumcraftCraftingManager;
 
 
-@Mod(modid = ThaumicExploration.MODID, name = "GRADLETOKEN_MODNAME", version = "GRADLETOKEN_VERSION", dependencies="required-after:Thaumcraft;after:ThaumicTinkerer")
+@Mod(modid = ThaumicExploration.MODID, name = "Thaumic Exploration", version = "GRADLETOKEN_VERSION", dependencies="required-after:Thaumcraft;after:ThaumicTinkerer")
 
 public class ThaumicExploration {
 	
@@ -121,7 +121,7 @@ public class ThaumicExploration {
     public static ThaumicExploration instance;
     
     public static FMLEventChannel channel;
-    public static final String MODID = "GRADLETOKEN_MODID";
+    public static final String MODID = "ThaumicExploration";
 
     public static ArrayList<MutablePair<Item, Integer>> allowedItems = new ArrayList<MutablePair<Item, Integer>>();
 	public static Item pureZombieBrain;
@@ -365,7 +365,7 @@ public class ThaumicExploration {
 		
 		discountRing = new ItemBaubleDiscountRing().setCreativeTab(tab).setUnlocalizedName("thaumicexploration:discountRing").setTextureName("thaumicExploration:discountRing");
 		GameRegistry.registerItem(discountRing, "discountRing");
-        ForgeChunkManager.setForcedChunkLoadingCallback(instance,new ChunkLoaderCallback());
+        ForgeChunkManager.setForcedChunkLoadingCallback(instance, new ChunkLoaderCallback());
 	}
 
 
