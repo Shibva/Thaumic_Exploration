@@ -1,0 +1,25 @@
+// Add your dependencies here
+
+dependencies {
+    compile('com.github.GTNewHorizons:AppleCore:3.1.7:dev')
+    compile('thaumcraft:Thaumcraft:1.7.10-4.2.3.5:dev')
+    compile(deobf('https://media.forgecdn.net/files/2234/410/witchery-1.7.10-0.24.1.jar'))
+    compileOnly('com.github.GTNewHorizons:Applied-Energistics-2-Unofficial:rv3-beta-70-GTNH:dev') {
+        transitive = false
+    }
+    compileOnly('com.github.GTNewHorizons:Baubles:1.0.1.14:dev') {
+        transitive = false
+    }
+    compileOnly('com.github.GTNewHorizons:Botania:1.9.1-GTNH:dev') {
+        transitive = false
+    }
+    compileOnly('com.github.GTNewHorizons:CodeChickenLib:1.1.5.2:dev') {
+        transitive = false
+    }
+    compileOnly('com.github.GTNewHorizons:ThaumicTinkerer:2.6.0:dev') {
+        transitive = false
+    }
+    compileOnly("com.github.GTNewHorizons:waila:1.5.18:api") {
+        transitive = false
+    }
+}
