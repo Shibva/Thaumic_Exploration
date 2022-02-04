@@ -113,7 +113,7 @@ import thaumcraft.common.config.ConfigBlocks;
 import thaumcraft.common.lib.crafting.ThaumcraftCraftingManager;
 
 
-@Mod(modid = ThaumicExploration.MODID, name = "Thaumic Exploration", version = "${version}", dependencies="required-after:Thaumcraft;after:ThaumicTinkerer")
+@Mod(modid = ThaumicExploration.MODID, name = "Thaumic Exploration", version = "GRADLETOKEN_VERSION", dependencies="required-after:Thaumcraft;after:ThaumicTinkerer")
 
 public class ThaumicExploration {
 	
@@ -365,7 +365,7 @@ public class ThaumicExploration {
 		
 		discountRing = new ItemBaubleDiscountRing().setCreativeTab(tab).setUnlocalizedName("thaumicexploration:discountRing").setTextureName("thaumicExploration:discountRing");
 		GameRegistry.registerItem(discountRing, "discountRing");
-        ForgeChunkManager.setForcedChunkLoadingCallback(instance,new ChunkLoaderCallback());
+        ForgeChunkManager.setForcedChunkLoadingCallback(instance, new ChunkLoaderCallback());
 	}
 
 
