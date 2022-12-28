@@ -6,7 +6,10 @@ import cpw.mods.fml.common.ObfuscationReflectionHelper;
 import flaxbeard.thaumicexploration.interop.AppleCoreInterop;
 import flaxbeard.thaumicexploration.misc.FakePlayerPotion;
 import java.lang.reflect.Field;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
@@ -21,12 +24,6 @@ import thaumcraft.common.config.ConfigItems;
 
 public class ItemFoodTalisman extends Item {
 
-    private static final String[] ALL_FOOD_BLACKLIST_NAMES = {
-        ConfigItems.itemManaBean.getUnlocalizedName(),
-        ConfigItems.itemZombieBrain.getUnlocalizedName(),
-        "item.foodstuff.0.name",
-        "ic2.itemterrawart",
-    };
     public static List<String> foodBlacklist = new ArrayList<String>();
     public static Map<String, Boolean> foodCache = new HashMap<String, Boolean>();
     private final int MAX_HEAL_SIZE_TALISMAN = 1000;
@@ -36,11 +33,9 @@ public class ItemFoodTalisman extends Item {
         super();
         this.maxStackSize = 1;
         this.setMaxDamage(MAX_HEAL_SIZE_TALISMAN);
-        initFoodBlackList();
-    }
-
-    private void initFoodBlackList() {
-        Collections.addAll(foodBlacklist, ALL_FOOD_BLACKLIST_NAMES);
+        foodBlacklist.add(ConfigItems.itemManaBean.getUnlocalizedName());
+        foodBlacklist.add(ConfigItems.itemZombieBrain.getUnlocalizedName());
+        foodBlacklist.add("item.foodstuff.0.name");
     }
 
     @Override
@@ -178,19 +173,6 @@ public class ItemFoodTalisman extends Item {
                 return false;
             }
         }
-
-        if (Loader.isModLoaded("AppleCore")) {
-            try {
-                if (AppleCoreInterop.getHeal(food) > 0) {
-                    foodCache.put(foodName.toLowerCase(), true);
-                    return true;
-                }
-            } catch (Exception e) {
-                foodCache.put(foodName.toLowerCase(), false);
-                return false;
-            }
-        }
-
         if (food.getItem() instanceof ItemFood) {
             try {
 
