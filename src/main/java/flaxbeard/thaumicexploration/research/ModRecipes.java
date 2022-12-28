@@ -369,8 +369,9 @@ public final class ModRecipes {
                 new ItemStack(Items.cooked_porkchop),
                 new ItemStack(Items.cooked_fished),
                 new ItemStack(Items.bread),
-                new Itemstack(Items.chest),
-                new Itemstack(Items.golden_carrot));
+                new ItemStack(Blocks.chest),
+                new ItemStack(Items.golden_carrot));
+
 
         registerResearchItemI(
                 "REPLICATOR",
