@@ -372,7 +372,6 @@ public final class ModRecipes {
                 new ItemStack(Blocks.chest),
                 new ItemStack(Items.golden_carrot));
 
-
         registerResearchItemI(
                 "REPLICATOR",
                 new ItemStack(ThaumicExploration.replicator),
