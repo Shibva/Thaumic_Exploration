@@ -360,14 +360,17 @@ public final class ModRecipes {
                         .add(Aspect.HUNGER, 30)
                         .add(Aspect.FLESH, 25)
                         .add(Aspect.CROP, 25)
-                        .add(Aspect.EXCHANGE, 10),
+                        .add(Aspect.EXCHANGE, 10)
+                        .add(Aspect.VOID, 32),
                 new ItemStack(ConfigItems.itemResource, 1, 15),
                 new ItemStack(Blocks.obsidian),
                 new ItemStack(Items.cooked_beef),
                 new ItemStack(Items.cooked_chicken),
                 new ItemStack(Items.cooked_porkchop),
                 new ItemStack(Items.cooked_fished),
-                new ItemStack(Items.bread));
+                new ItemStack(Items.bread),
+                new ItemStack(Blocks.chest),
+                new ItemStack(Items.golden_carrot));
 
         registerResearchItemI(
                 "REPLICATOR",
